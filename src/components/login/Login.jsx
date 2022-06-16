@@ -65,9 +65,14 @@ return (
 							</label>
 							<span className="ml-auto"><a href="#" className="forgot-pass">Forgot Password</a></span>
 						</div>
-						<button type="submit" className='btn btn-block btn-primary' >Masuk</button>
-						<span className="d-block text-center my-4">Belum Punya Akun ?
-							 <Link to="/register" style={{ color: "#7126B5" }}> Daftar di sini</Link></span>
+						<button type="submit" className='btn btn-block btn-primary'>Masuk</button>
+						<div className='login-form mt-4 ms-5'>
+							<p className='text-center'>Belum Punya Akun?{' '}
+								<Link to='/register' className='link-already-login'>
+									Daftar di sini
+								</Link>
+							</p>
+						</div>	
 					</form>
 				</div>
 			</div>
