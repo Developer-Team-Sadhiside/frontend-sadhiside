@@ -1,0 +1,98 @@
+.register {
+  height: 100vh;
+}
+
+.header-register h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.bg-image {
+  background-image: url('../../../public/images/secondhand.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.register {
+  min-height: 100vh;
+}
+
+.register-form form-label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.register-form label {
+  margin-top: 16px;
+}
+
+.register-form input {
+  padding: 12px 16px;
+  gap: 16px;
+  height: 48px;
+  border: 1px solid #d0d0d0;
+  border-radius: 16px;
+  box-shadow: none !important;
+}
+
+.register-form input:focus {
+  border: 1px solid #d0d0d0;
+}
+
+.register-button {
+  background-color: #7126b5;
+  color: #ffffff;
+  margin-top: 24px;
+}
+
+.register-button:hover {
+  color: #ffffff;
+}
+
+.register-button:focus {
+  background-color: #7126b5;
+  box-shadow: none;
+  border-color: #7126b5;
+}
+
+.register-form a {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7126b5;
+  text-decoration: none;
+}
+
+.register-form p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin-top: 40px;
+}
+
+.bi-eye-slash {
+  position: relative;
+  left: 93%;
+  top: -37px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.bi-eye {
+  position: relative;
+  left: 93%;
+  top: -37px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+link-already-registered:focus {
+  border: none;
+}
