@@ -1,0 +1,17 @@
+.card-product {
+  width: 181.33px;
+  border-radius: 4px;
+}
+
+.price-product {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.product-category {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #8a8a8a;
+}
