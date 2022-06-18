@@ -29,12 +29,16 @@
     align-items: center;
     justify-content: space-around;
     border-radius: 10px;
-    margin-right: 100px;
+    margin-right: 150px;
     
+  }
+  .container-button svg{
+    margin-right: 5px;
   }
   .container-button a{
     color: #fff;
     text-decoration: none;
+    margin-right: 3px;    
   }
   
   .home-search {
