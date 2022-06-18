@@ -3,7 +3,7 @@ import './Card.css';
 const Card = () => {
   return (
     <div className='container mt-5'>
-      <div className='card-product  shadow-sm'>
+      <div className='card-product shadow'>
         <img
           className='card-img-top'
           src='/images/jam-tangan.png'
