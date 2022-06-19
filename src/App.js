@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './mainlayout/MainLayout';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import  PageProfile  from './pages/PageProfile';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Route path='/' element={<MainLayout />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/profile' element={<PageProfile />} />
+
       </Routes>
     </BrowserRouter>
   );
