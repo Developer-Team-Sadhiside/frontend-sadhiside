@@ -1,19 +1,16 @@
 import './Card.css';
 
-const Card = () => {
+const Card = ({ image, title, category, price }) => {
   return (
-    <div className='container mt-5'>
-      <div className='card-product shadow'>
-        <img
-          className='card-img-top'
-          src='/images/jam-tangan.png'
-          alt='Card image cap'
-        />
-        <div className='card-body'>
-          <h5 className='product-title'>Jam Tangan Casio</h5>
-          <p className='product-category'>Aksesoris</p>
-          <p className='price-product'>Rp 250.000</p>
-        </div>
+    <div className='card-product col-sm-2'>
+      <img
+        className='card-img-top'
+        src={image}
+      />
+      <div className=''>
+        <h5 className='product-title'>{title}</h5>
+        <p className='product-category'>{category}</p>
+        <p className='price-product'>Rp {price.toLocaleString("id-ID")}</p>
       </div>
     </div>
   );
