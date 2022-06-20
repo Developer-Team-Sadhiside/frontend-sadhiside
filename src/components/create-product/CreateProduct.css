@@ -42,7 +42,7 @@ input[type='number'] {
 .create-product-form .picture {
   width: 96px;
   height: 96px;
-  border: 2px dashed #D0D0D0;
+  border: 2px dashed #d0d0d0;
   border-radius: 12px;
   cursor: pointer;
   text-align: center;
@@ -50,13 +50,29 @@ input[type='number'] {
   line-height: 90px;
 }
 
-.testtt{
+.create-product-form .image-uploaded {
   object-fit: cover;
   height: 96px;
+  width: 96px;
+  border-radius: 12px;
 }
 
-.plus-svg {
-  margin: auto;
+.create-product-form .preview {
+  background: #ffffff;
+  border: 1px solid #7126b5;
+  color: #151515;
+}
+
+.create-product-form .terbitkan {
+  background: #7126b5;
+  color: #ffffff;
+  border: none;
+}
+
+.create-product-form .preview, .create-product-form .terbitkan {
+  height: 48px;
+  border-radius: 16px;
+  margin: 4px 10px
 }
 
 textarea {
