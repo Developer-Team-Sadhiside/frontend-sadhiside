@@ -8,8 +8,12 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 
+.create-product-container .back {
+  cursor: pointer;
+  margin-top: 13px;
+}
+
 .create-product-form {
-  width: 568px;
   margin: 0px auto;
 }
 
@@ -69,10 +73,11 @@ input[type='number'] {
   border: none;
 }
 
-.create-product-form .preview, .create-product-form .terbitkan {
+.create-product-form .preview,
+.create-product-form .terbitkan {
   height: 48px;
   border-radius: 16px;
-  margin: 4px 10px
+  margin: 4px 10px;
 }
 
 textarea {
