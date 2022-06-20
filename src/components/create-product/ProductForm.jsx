@@ -1,7 +1,7 @@
-import './CreateProduct.css';
+import './ProductForm.css';
 import { useRef, useState, useEffect } from 'react';
 
-export default function CreateProduct() {
+export default function ProductForm() {
   const [price, setPrice] = useState();
 
   const [image, setImage] = useState();
