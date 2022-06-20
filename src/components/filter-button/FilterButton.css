@@ -35,11 +35,13 @@
 .filter-active {
   color: #ffffff;
   background-color: #7126b5;
+  margin-top: 10px;
 }
 
 .filter-inactive {
   color: #3c3c3c;
   background-color: #e2d4f0;
+  margin-top: 10px;
 }
 
 .filter-inactive:hover {

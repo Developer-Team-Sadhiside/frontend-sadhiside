@@ -4,7 +4,7 @@ import Banner from '../components/banner/Banner';
 import { IMAGES } from '../data/data.js';
 import Navbar from '../components/navbar/navbar';
 import FilterButton from '../components/filter-button/FilterButton';
-import CardCollection from '../components/card/CardCollection';
+import Card from '../components/card/Card';
 
 const LandingPage = () => {
   return (
@@ -12,7 +12,7 @@ const LandingPage = () => {
       <Navbar></Navbar>
       <Banner images={IMAGES} slidesToShow={5} />
       <FilterButton />
-      <CardCollection />
+      <Card />
     </div>
   );
 };
