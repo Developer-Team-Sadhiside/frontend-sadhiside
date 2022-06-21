@@ -1,26 +1,62 @@
-import React from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import "./profile.css"
-import AvatarImageCropper from "react-avatar-image-cropper";
+
 
 const Profile = () => {
-	const apply = file => {
-    console.log(file);
-  };
+	const [image, setImage] = useState();
+	const [preview, setPreview] = useState();
+  	const fileInputRef = useRef();
 
+	  useEffect(() => {
+		if (image) {
+		  const reader = new FileReader();
+		  reader.readAsDataURL(image);
+		  reader.onload = function (e) {
+			setPreview(reader.result);
+		  };
+		} else {
+		  setPreview(null);
+		}
+	  }, [image]);
+	
+	
 	return (	
 		<div className='profile-container'>
-			<div className='mt-4'
-					style={{
-						backgroundImage:
-							'/images/profile-kosong.png',
-						width: "250px",
-						height: "250px",
-						borderRadius: "16px",
-						margin:"0px 150px"
-					}}
-    	>
-      	<AvatarImageCropper apply={apply} isBack={true} />
-    	</div>
+			<div className='col-sm'>
+			<img
+				src='/svg/fi_arrow-left.svg'
+				alt=''
+				className="back"
+				style={{ marginTop:"30px", marginLeft:"-50px" }}
+			/>
+			</div>
+			<div
+              className='picture'
+              onClick={() => {
+                fileInputRef.current.click();
+              }}
+            >
+              {preview ? (
+                <img src={preview} alt='' className='image-uploaded' />
+              ) : (
+                <img src='/svg/profile-kosong.svg' alt='' className='plus-svg' />
+              )}
+            </div>
+			<input
+              type='file'
+              className='form-control'
+              style={{ display: 'none' }}
+              ref={fileInputRef}
+              accept='image/*'
+              onChange={(event) => {
+                const file = event.target.files[0];
+                if (file) {
+                  setImage(file);
+                } else {
+                  setImage(null);
+                }
+              }}
+            />
 			<form>
 				<div className='profile-form mt-4'>
 						<label className='form-label' htmlFor='nama'>Nama*</label>
