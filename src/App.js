@@ -8,7 +8,7 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import CreateProductPage from './pages/CreateProductPage';
 import  PageProfile  from './pages/PageProfile';
-
+import Bid from './components/bid-info/Bid';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/products/create' element={<CreateProductPage />} />
         <Route path='/profile' element={<PageProfile />} />
+        <Route path='/product/bid' element={<Bid />} />
       </Routes>
     </BrowserRouter>
   );
