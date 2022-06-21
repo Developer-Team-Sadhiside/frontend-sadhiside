@@ -7,6 +7,8 @@ import MainLayout from './mainlayout/MainLayout';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import CreateProductPage from './pages/CreateProductPage';
+import  PageProfile  from './pages/PageProfile';
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/products/create' element={<CreateProductPage />} />
+        <Route path='/profile' element={<PageProfile />} />
       </Routes>
     </BrowserRouter>
   );

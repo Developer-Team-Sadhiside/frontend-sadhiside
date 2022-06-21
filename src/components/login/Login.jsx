@@ -51,7 +51,6 @@ return (
 						<label>email</label>
 							<input type="text" className="form-control" placeholder='Masukan Email' />
 						</div>
-
 						<div className="form-group last mt-5">
 							<label>Password</label>		
 							<input type={password} className="form-control" placeholder="Enter your password" value={inputtext.password} onChange={inputEvent} name="password" />
