@@ -55,41 +55,7 @@ return (
                                 <button className='btn btn-simpan' id='preview' data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
                                     Terima
-                                </button>
-
-                                {/* MODAL */}
-                                <div className="modal fade mt-5" id="exampleModal"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div className="modal-dialog">
-                                        <div className="modal-content">
-                                            <div className="modal-header">
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div className=' mx-4 my-4'>
-                                                <p className='fw-bold'>Masukkan Harga Tawaranmu</p>
-                                                <p>Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan
-                                                    segera dihubungi
-                                                    penjual.</p>
-                                                <div className='card mt-2 rounded-4'>
-                                                    <div className='card_tawar'>
-                                                        <img src='/images/product-buyer.png' />
-                                                        <div className='col-lg-8 mx-3'>
-                                                            <p className='text_modal fw-semibold mt-1'>Jam Tangan Casio
-                                                            </p>
-                                                            <div className='text_modal'>Rp 250.000</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p className='mt-3'>Harga Tawar</p>
-                                                <input type='harga_tawar' id='harga_tawar' placeholder='Rp 0,00'
-                                                    className='field_produk form-control' autoComplete='true'
-                                                    data-testid='input-harga_tawar' />
-                                            </div>
-                                            <button type="button" className='btn btn_kirim mx-4 my-4'>Kirim</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                </button>                            
                             </div>
                         </div>
                     </div>
