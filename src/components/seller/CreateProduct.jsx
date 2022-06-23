@@ -1,7 +1,7 @@
-import './ProductForm.css';
+import '../../assets/styles/CreateProduct.css';
 import { useRef, useState, useEffect } from 'react';
 
-export default function ProductForm() {
+export default function CreateProduct() {
   const [price, setPrice] = useState();
 
   const [image, setImage] = useState();
@@ -84,7 +84,7 @@ export default function ProductForm() {
             <input
               type='file'
               className='form-control'
-              style={{ display: 'none' }}
+              style={{ display: 'none'}}
               ref={fileInputRef}
               accept='image/*'
               onChange={(event) => {

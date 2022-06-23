@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css';
+import '../assets/styles/Navbar.css';
 
 const Navbar = () => {
   return (
@@ -47,7 +47,7 @@ const Navbar = () => {
           </div>
         </div>
         <div class='container-button'>
-          <Link to='/login'>
+          <Link to='/users/login'>
             <svg
               width='20'
               height='20'
