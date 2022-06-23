@@ -9,6 +9,7 @@ import Register from './components/register/Register';
 import CreateProductPage from './pages/CreateProductPage';
 import  PageProfile  from './pages/PageProfile';
 import Bid from './components/bid-info/Bid';
+import DashboardSeller from './pages/DashboardSeller';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path='/products/create' element={<CreateProductPage />} />
         <Route path='/profile' element={<PageProfile />} />
         <Route path='/product/bid' element={<Bid />} />
+        <Route path='/seller/dashboard' element={<DashboardSeller />} />
+        
       </Routes>
     </BrowserRouter>
   );

@@ -7,7 +7,7 @@ import Navbar from '../components/navbar/Navbar';
  const PageProfile = () => {
   return (
     <div>
-        <Navbar/>
+        <Navbar />
         <Profile/>
     </div>
   )
