@@ -1,0 +1,10 @@
+.tag {
+  text-align: center;
+}
+
+.slick-slide img {
+  margin: auto;
+  margin-top: 50px;
+  width: 968px;
+  height: 288px;
+}

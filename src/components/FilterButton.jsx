@@ -1,4 +1,4 @@
-import './FilterButton.css';
+import '../assets/styles/FilterButton.css';
 import { useState } from 'react';
 
 const FilterButton = () => {
