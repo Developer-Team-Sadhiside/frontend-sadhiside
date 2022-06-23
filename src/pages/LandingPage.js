@@ -1,7 +1,7 @@
 import Navbar from '../components/Navbar';
 import Banner from '../components/Carousel';
 import { IMAGES } from '../assets/dumps/banner';
-import CardCollection from '../components/Card';
+import CardCollection from '../components/CardProduct';
 import FilterButton from '../components/FilterButton';
 import SellButton from '../components/SellButton';
 
