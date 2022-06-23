@@ -4,6 +4,7 @@ import Profile from '../components/profile/Profile';
 import Navbar from '../components/navbar/Navbar';
 
 
+
  const PageProfile = () => {
   return (
     <div>

@@ -1,0 +1,32 @@
+.add_product{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 8px 16px;
+    gap: 8px;
+    width: 206.67px;
+    height: 198px;
+    border-radius: 4px;
+    border: 2px dashed #D0D0D0;
+    margin-top: -195px;
+    margin-left: 270px;
+
+}
+
+.text_add_product{
+    width: 140px;
+    height: 18px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    left: 33.33px;
+    text-align: center;
+}
+.add-svg{
+    cursor: pointer;
+}
+
+.card-body{
+    cursor: pointer;
+}
