@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../assets/styles/Card.css'
+import '../assets/styles/CardProduct.css'
 import { dummyCard } from '../assets/dumps/card';
 
 export function Card ({image, title, category, price}) {
