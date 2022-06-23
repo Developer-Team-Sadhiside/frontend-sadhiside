@@ -1,5 +1,5 @@
 import Navbar from '../components/Navbar';
-import Banner from '../components/Banner';
+import Banner from '../components/Carousel';
 import { IMAGES } from '../assets/dumps/banner';
 import CardCollection from '../components/Card';
 import FilterButton from '../components/FilterButton';

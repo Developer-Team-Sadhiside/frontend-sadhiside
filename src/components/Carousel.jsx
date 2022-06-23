@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import '../assets/styles/Banner.css';
+import '../assets/styles/Carousel.css';
 
 const Banner = ({ images }) => {
   const settings = {
