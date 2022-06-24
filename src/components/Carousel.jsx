@@ -1,32 +1,45 @@
 import React from 'react';
-import Slider from 'react-slick';
+import { Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import '../assets/styles/Carousel.css';
+import "swiper/css";
+import "swiper/css/pagination";
 
-const Banner = ({ images }) => {
-  const settings = {
-    className: 'center',
-    centerMode: true,
-    infinite: true,
-    dots: false,
-    speed: 300,
-    slidesToShow: 1,
-    swipeToSlide: true,
-    focusOnSelect: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  };
+const Carousel = () => {
   return (
     <>
-      <div className='imgslider'>
-        <Slider {...settings}>
-          {images.map((item) => (
-            <div key={item.id}>
-              <img src={item.src} alt={item.alt} />
-            </div>
-          ))}
-        </Slider>
-      </div>
+      <Swiper
+        height={500}
+        slidesPerView={2}
+        centeredSlides={true}
+        spaceBetween={-80}
+        grabCursor={true}
+        loop={true}
+        autoplay={{
+            delay: 1500,
+            disableOnInteraction: false,
+          }}
+        breakpoints={{
+          320:{
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 2,
+            spaceBetween: -30,
+          },
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        <SwiperSlide><img src="/images/banner.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
+        <SwiperSlide><img src="/images/carousel-1.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
+        <SwiperSlide><img src="/images/carousel-2.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
+        <SwiperSlide><img src="/images/carousel-3.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
+        <SwiperSlide><img src="/images/carousel-4.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
+      </Swiper>
     </>
-  );
-};
-export default Banner;
+  )
+}
+
+export default Carousel
