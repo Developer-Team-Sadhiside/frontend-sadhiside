@@ -35,6 +35,8 @@ const Carousel = () => {
         <SwiperSlide><img src="/images/banner.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
         <SwiperSlide><img src="/images/carousel-1.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
         <SwiperSlide><img src="/images/carousel-2.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
+        <SwiperSlide><img src="/images/carousel-3.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
+        <SwiperSlide><img src="/images/carousel-4.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
       </Swiper>
     </>
   )
