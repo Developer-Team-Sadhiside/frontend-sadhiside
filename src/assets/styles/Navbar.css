@@ -12,6 +12,8 @@
   align-items: center;
   justify-content: space-around;
   margin-left: 130px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   background-color: #7126b5;
 }
 .container-button {
