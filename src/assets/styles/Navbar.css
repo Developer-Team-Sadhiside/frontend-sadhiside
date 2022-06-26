@@ -12,6 +12,9 @@
   align-items: center;
   justify-content: space-around;
   margin-left: 130px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  
   background-color: #7126b5;
 }
 .container-button {
@@ -63,3 +66,133 @@
 #header {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
+.fi-bell, .fi-list{
+  position: absolute;
+  cursor: pointer;
+  bottom: 8px;
+  width: 48px;
+  height: 48px;
+  right: 150px;
+  top: 27px;  
+}  
+.fi-list{
+  right: 200px;
+}
+.fi-user{
+  bottom: 8px;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  margin-right: 100px;
+}
+.badge-notifikasi {
+  position:relative;
+}
+.badge-notifikasi[data-notifikasi]:after {
+content:attr(data-badge);
+position:absolute;
+right:-20px;
+font-size:.7em;
+background:#e53935;
+color:white;
+width:10px;
+height:10px;
+border-radius: 50%;
+
+}
+
+.badge-notif {
+position:relative;
+}
+.badge-notif[data-badge]:after {
+content:attr(data-badge);
+position:absolute;
+top:0px;
+right:1px;
+font-size:.7em;
+background:#e53935;
+color:white;
+width:10px;
+height:10px;
+border-radius: 50%;
+}
+
+
+    #notifikasi {
+      display: none;
+      position: absolute;
+      top: -0;
+      left: -0;
+      width: 100%;
+      height: 100%;
+    }
+    .box {
+      position: absolute;
+      width: 390px;
+      height: 250px;
+      right: 0px;
+      top: 40px;
+      background-color: white;
+      border-radius: 10px;
+      color: black;
+      display: flex;
+      flex-direction:column;
+      align-items: flex-start;
+      padding: 24px;
+      gap: 16px;
+      z-index: 999;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    }
+    #notifikasi:target {display: block;}
+    .tittle p{
+      font-family: 'Poppins';
+      font-style: normal;
+      font-size: 10px;
+      line-height: 14px;
+      color: #8A8A8A;;
+      margin-left: 80px;
+      margin-top: -50px;
+     
+    }
+    .date p{
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      text-align: right;
+      font-size: 10px;
+      line-height: 14px;
+      width: 240px;
+      margin-left: 77px;
+      color: #8A8A8A;
+      margin-top:-29px;
+    }
+    .deskription a{
+      position:absolute;
+      font-style: normal;
+      text-align: left;
+      line-height: 10px;
+      width: 200px;
+      margin-bottom: 100px;
+      margin-left: 80px;
+      margin-top: -px; 
+   }     
+   .box img{
+    width: 48px;
+    height: 48px;
+   }
+   .box svg{
+    width: 340px;
+   }
+   .bidder, .account a{
+    position: absolute;
+    width: 155px;
+    height: 24px;
+    left: 688px;
+    top: 30px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+   }
+   
