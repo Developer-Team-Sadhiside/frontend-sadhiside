@@ -1,0 +1,25 @@
+@media (max-width: 576px) {
+}
+
+@media (max-width: 768px) {
+  .product-card-preview {
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Gusde Start */
+  .product-carousel-preview {
+    height: 236px;
+  }
+  .product-carousel-image-size-preview {
+    height: 236px;
+  }
+  /* Gusde End */
+}
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 1400px) {
+}
