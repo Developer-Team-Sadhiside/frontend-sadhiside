@@ -126,9 +126,7 @@ const Navbar= () => {
     <nav className='navbar navbar-light pt-4' style={{ height: '' }}>
       <Logo />
       <Search/>
-      <List/>
-      <Notif/>
-      <User/>
+      <Login />
       
     </nav>
     </header>
