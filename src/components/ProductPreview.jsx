@@ -10,10 +10,10 @@ export function ProductCarouselPreview() {
     <div id='productCarouselPreviewControl' className='carousel slide product-carousel-preview'>
       <div className='carousel-inner product-carousel-image-preview'>
         <div className='carousel-item active'>
-          <img src={products[params.id]?.image} className='product-carousel-image-size-preview' />
+          <img src={products[params.id]?.image ?? products[0].image} className='product-carousel-image-size-preview' />
         </div>
         <div className='carousel-item'>
-          <img src={products[params.id]?.image} className='product-carousel-image-size-preview' />
+          <img src={products[params.id]?.image ?? products[0].image} className='product-carousel-image-size-preview' />
         </div>
       </div>
       <div className='product-carousel-button-preview'>
@@ -34,7 +34,7 @@ export function ProductDescriptionPreview() {
   return (
     <div className='product-description-preview'>
       <h3 className='product-description-heading-preview'>Deskripsi</h3>
-      <p className='product-description-description-preview'>{products[params.id]?.description}</p>
+      <p className='product-description-description-preview'>{products[params.id]?.description ?? products[0].description}</p>
     </div>
   );
 }
@@ -64,9 +64,9 @@ export function ProductCardPreview() {
 
   return (
     <div className='product-card-preview'>
-      <p className='product-card-heading-preview'>{products[params.id]?.title}</p>
-      <p className='product-card-category-preview'>{products[params.id]?.category}</p>
-      <p className='product-card-price-preview'>Rp. {products[params.id]?.price.toLocaleString('id-ID')}</p>
+      <p className='product-card-heading-preview'>{products[params.id]?.title ?? products[0].title}</p>
+      <p className='product-card-category-preview'>{products[params.id]?.category ?? products[0].category}</p>
+      <p className='product-card-price-preview'>Rp. {products[params.id]?.price.toLocaleString('id-ID') ?? products[0].price}</p>
       <div className='product-card-button-preview'>
         {params.id ? (
           <PurpleButton content='Saya Tertarik dan Ingin Nego' />
@@ -87,11 +87,11 @@ export function UserCardPreview() {
   return (
     <div className='user-card-preview row g-0'>
       <div className='user-card-image-preview col-sm-3'>
-        <img src={users[params.id]?.profilePicture} alt='User Image' className='col-sm-3 user-card-image-size-preview' />
+        <img src={users[params.id]?.profilePicture ?? users[0]?.profilePicture} alt='User Image' className='col-sm-3 user-card-image-size-preview' />
       </div>
       <div className='col user-card-identity-preview'>
-        <div className='user-card-identity-name-preview'>{users[params.id]?.name ?? 'Undefined'}</div>
-        <div className='user-card-identity-city-preview'>{users[params.id]?.city ?? 'Undefined'}</div>
+        <div className='user-card-identity-name-preview'>{users[params.id]?.name ?? users[0]?.name}</div>
+        <div className='user-card-identity-city-preview'>{users[params.id]?.city ?? users[0]?.city}</div>
       </div>
     </div>
   );
