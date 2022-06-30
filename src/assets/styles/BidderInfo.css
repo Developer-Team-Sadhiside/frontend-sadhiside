@@ -3,12 +3,15 @@
   grid-template-columns: min-content 1fr;
   border-radius: 16px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-
   height: 80px;
+  width: 568px;
 }
 
 .text_penjual {
   margin-left: 15px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px
 }
 .text_kota{
   color: #8A8A8A;
@@ -16,6 +19,11 @@
   font-size: 12px;
   line-height: 14px;
   margin-top: 4px;
+}
+.title-bidder{
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .title {
@@ -46,7 +54,6 @@
   margin-top: 20px;
   width: 452px;
   height: 48px;
-  padding: 12px 24px;
   background-color: #7126b5;
   color: #ffffff;
   border-radius: 16px;
@@ -73,8 +80,12 @@
 
 .back{
   margin-top: 30px; 
-  margin-left: 80px; 
+  /* margin-left: 80px;  */
   cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: inline;
+  position: relative;
 }
 
 .produk-img{
@@ -102,6 +113,8 @@
   border-bottom: 1px #D0D0D0 solid !important;
   width: 568px;
   margin-left: 35px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .desc-produk{
