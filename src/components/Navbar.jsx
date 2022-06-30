@@ -142,7 +142,7 @@ function NavInfoAccount() {
 }
 const Navbar = () => {
   return (
-    <header id="header" className='mb-5'>
+    <header id="header">
       <nav className="navbar navbar-light pt-4" style={{ height: "" }}>
         <Logo />
         <Search />
