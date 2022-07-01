@@ -37,7 +37,7 @@ const Profile = () => {
         {preview ? (
           <img src={preview} alt='' className='image-uploaded' />
         ) : (
-          <img src='/svg/profile-kosong.svg' alt='' className='plus-svg' />
+          <img src='/svg/fi-blank-profile.svg' alt='' className='plus-svg' />
         )}
       </div>
       <input
