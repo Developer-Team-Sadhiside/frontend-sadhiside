@@ -5,6 +5,40 @@ import { ToggleButton, ToggleButtonGroup} from 'react-bootstrap';
 
 
 const CategorySeller = () => {
+
+const [all, setAll] = useState(true)
+const [like, setLike] = useState(false)
+const [sell, setSell] = useState(false)
+
+const colorActive = {
+  color: '#7126B5',
+};
+const colorInactive = {
+  color: 'black',
+};
+
+
+const handleAll = (e) =>{
+  e.preventDefault()
+  setAll(true)
+  setLike(false)
+  setSell(false)
+}
+
+const handleLike = (e) => {
+  e.preventDefault()
+  setAll(false)
+  setLike(true)
+  setSell(false)
+}
+
+const handleSell = (e) => {
+  e.preventDefault()
+  setAll(false)
+  setLike(false)
+  setSell(true)
+}
+
 const navigate = useNavigate();
 const [buttonGroup, setButtonGroup] = useState("Semua")
 
@@ -16,27 +50,30 @@ return (
         <ToggleButtonGroup type="radio" name="category-mobile-version" value={buttonGroup}
           className='button-group-custom' onChange={(event)=> {
           setButtonGroup(event)}}>
+
           <h6 className='mb-3 text-category'>Kategori</h6>
-          <ToggleButton id="radio-button-1" value={"Semua Produk"}  className='btn-group-category bb-category'>
-            <div className='d-flex justify-content-center align-items-center'>
-              <img src="/images/Box_icon.png" className='me-2' style={{width: '25px'}} alt="" />
+          <ToggleButton id="radio-button-1" value={"Semua Produk"}  onClick={handleAll}  className='btn-group-category bb-category'>
+            <div className='d-flex justify-content-center align-items-center' style={ all ? colorActive : colorInactive }>
+            <i class="me-2 fa-solid fa-box"></i>
+              {/* <img src="/images/Box_icon.png" className='me-2' style={{width: '25px'}} alt="" /> */}
               <p className='m-0' >Semua Produk</p>
             </div>
-            <img src="/images/Chevron-Right.png" className='right-arrow' style={{width: '25px'}} alt="" />
+            <i className="fa-solid fa-angle-right"style={ all ? colorActive : colorInactive }></i>
           </ToggleButton>
-          <ToggleButton id="radio-button-2" value={"Diminati"} className='btn-group-category bb-category'>
-            <div className='d-flex justify-content-center align-items-center'>
-              <img src="/images/Heart_icon.png" className='me-2' style={{width: '25px'}} alt="" />
+
+          <ToggleButton id="radio-button-2" value={"Diminati"} onClick={handleLike} className='btn-group-category bb-category'>
+            <div className='d-flex justify-content-center align-items-center' style={ like ? colorActive : colorInactive }>
+              <i className="me-2 fa-solid fa-heart"></i>
               <p className='m-0'>Diminati</p>
             </div>
-            <img src="/images/Chevron-Right.png" className='right-arrow' style={{width: '25px'}} alt="" />
+            <i className="fa-solid fa-angle-right"style={ like ? colorActive : colorInactive }></i>
           </ToggleButton>
-          <ToggleButton id="radio-button-3" value={"Terjual"} className='btn-group-category'>
-            <div className='d-flex justify-content-center align-items-center'>
-              <img src="/images/Dollar_icon.png" className='me-2' style={{width: '25px'}} alt="" />
+          <ToggleButton id="radio-button-3" value={"Terjual"} onClick={handleSell} className='btn-group-category'>
+            <div className='d-flex justify-content-center align-items-center' style={ sell ? colorActive : colorInactive }>
+              <i className="me-2 fa-solid fa-dollar-sign"></i>
               <p className='m-0'>Terjual</p>
             </div>
-            <img src="/images/Chevron-Right.png" className='right-arrow' style={{width: '25px'}} alt="" />
+            <i className="fa-solid fa-angle-right"style={ sell ? colorActive : colorInactive }></i>
           </ToggleButton>
         </ToggleButtonGroup>
         {console.log("Mobile Button Value: ", buttonGroup)}
@@ -44,13 +81,23 @@ return (
     </div>
     <div className="col-lg-9 p-0">
       <div className="row">
-        <div className="col">
+        {all && (<div className="col">
           <div className='add-product-box p-2 text-center text-secondary'onClick={()=>
             {navigate("/products/create")}}>
             <img src="/images/Plus_icon.png" style={{ width:"30px" }} className= 'mb-3' alt="" />
-            <p>Tambah Produk</p>
+            <p>Semua Produk</p>
           </div>
-        </div>
+        </div>)}
+        {like && (<div className="col">
+          <div className='most-like'>
+            <img src="/images/NotMostLike.png" className= 'ms-5' alt="" />   
+          </div>
+        </div>)}
+        {sell && (<div className="col">
+          <div className='sold'onClick={()=>
+            {navigate("/dashboard/seller/sell")}}>
+          </div>
+        </div>)}
       </div>
     </div>
   </div>

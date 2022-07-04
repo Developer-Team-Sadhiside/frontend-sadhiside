@@ -15,11 +15,6 @@
   margin-left: 350px;
 }
 
-/* Add Product Box End */   
-
-
-/* Radio Button Group Start */
-
 
 .text-category {
   display: none;
@@ -61,6 +56,18 @@
 
 .right-arrow {
   display: none !important;
+}
+
+.most-like{
+  width: 296px;
+  height: 258px;
+  display: flex;
+  position:relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: -260px;
+  margin-left: 500px;
 }
 
 /* Radio Button Group End */

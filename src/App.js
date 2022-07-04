@@ -11,6 +11,7 @@ import CreateProductPage from './pages/CreateProductPage';
 import RegisterAsSellerPage from './pages/RegisterAsSellerPage';
 import ProductPreviewPage from './pages/ProductPreviewPage';
 import BidderPage from './pages/BidderPage';
+import DashboardSellerPage from './pages/DashboardSellerPage';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path='/products/preview/:id' element={<ProductPreviewPage />} />
         <Route path='/products/create/preview' element={<ProductPreviewPage />} />
         <Route path='/products/seller/bidder' element={<BidderPage />} />
+        <Route path='/dashboard/seller' element={<DashboardSellerPage />} />
       </Routes>
     </BrowserRouter>
   );
