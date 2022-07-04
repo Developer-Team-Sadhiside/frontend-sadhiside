@@ -10,7 +10,8 @@ import LoginPage from './pages/LoginPage';
 import CreateProductPage from './pages/CreateProductPage';
 import RegisterAsSellerPage from './pages/RegisterAsSellerPage';
 import ProductPreviewPage from './pages/ProductPreviewPage';
-import DashboardSellerPage from './pages/DashboardSellerPage';
+import BidderPage from './pages/BidderPage';
+
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Route path='/products/create' element={<CreateProductPage />} />
         <Route path='/products/preview/:id' element={<ProductPreviewPage />} />
         <Route path='/products/create/preview' element={<ProductPreviewPage />} />
-        <Route path='/dashboard/seller' element={<DashboardSellerPage />} />
+        <Route path='/products/seller/bidder' element={<BidderPage />} />
       </Routes>
     </BrowserRouter>
   );

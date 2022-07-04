@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 
 const Carousel = () => {
   return (
-    <>
+    <div className='mt-5'>
       <Swiper
         height={500}
         slidesPerView={2}
@@ -38,7 +38,7 @@ const Carousel = () => {
         <SwiperSlide><img src="/images/carousel-3.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
         <SwiperSlide><img src="/images/carousel-4.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
       </Swiper>
-    </>
+    </div>
   )
 }
 

@@ -26,8 +26,8 @@ export default function CreateProduct() {
   }
 
   return (
-    <div className='create-product-container container'>
-      <div className='row justify-content-sm-center'>
+    <div className='create-product-container container mt-3'>
+      <div className='row justify-content-sm-center g-0'>
         <div className='col-sm-1'>
           <img
             src='/svg/fi_arrow-left.svg'
@@ -35,7 +35,7 @@ export default function CreateProduct() {
             className="back"
           />
         </div>
-        <div className='col-md-6'>
+        <div className='col-sm-6'>
           <form className='create-product-form'>
             <label className='create-product-label'>Nama Produk</label>
             <input
@@ -117,6 +117,7 @@ export default function CreateProduct() {
             </div>
           </form>
         </div>
+        <div className='col-sm-1'></div>
       </div>
     </div>
   );
