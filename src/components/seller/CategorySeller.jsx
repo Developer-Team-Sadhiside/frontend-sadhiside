@@ -50,31 +50,29 @@ return (
         <ToggleButtonGroup type="radio" name="category-mobile-version" value={buttonGroup}
           className='button-group-custom' onChange={(event)=> {
           setButtonGroup(event)}}>
-
           <h6 className='mb-3 text-category'>Kategori</h6>
-          <ToggleButton id="radio-button-1" value={"Semua Produk"}  onClick={handleAll}  className='btn-group-category bb-category'>
+          <div id="radio-button-1" value={"Semua Produk"}  onClick={handleAll}  className='btn-group-category bb-category'>
             <div className='d-flex justify-content-center align-items-center' style={ all ? colorActive : colorInactive }>
             <i class="me-2 fa-solid fa-box"></i>
-              {/* <img src="/images/Box_icon.png" className='me-2' style={{width: '25px'}} alt="" /> */}
               <p className='m-0' >Semua Produk</p>
             </div>
             <i className="fa-solid fa-angle-right"style={ all ? colorActive : colorInactive }></i>
-          </ToggleButton>
+          </div>
 
-          <ToggleButton id="radio-button-2" value={"Diminati"} onClick={handleLike} className='btn-group-category bb-category'>
+          <div id="radio-button-2" value={"Diminati"} onClick={handleLike} className='btn-group-category bb-category'>
             <div className='d-flex justify-content-center align-items-center' style={ like ? colorActive : colorInactive }>
               <i className="me-2 fa-solid fa-heart"></i>
               <p className='m-0'>Diminati</p>
             </div>
             <i className="fa-solid fa-angle-right"style={ like ? colorActive : colorInactive }></i>
-          </ToggleButton>
-          <ToggleButton id="radio-button-3" value={"Terjual"} onClick={handleSell} className='btn-group-category'>
+          </div>
+          <div id="radio-button-3" value={"Terjual"} onClick={handleSell} className='btn-group-category'>
             <div className='d-flex justify-content-center align-items-center' style={ sell ? colorActive : colorInactive }>
               <i className="me-2 fa-solid fa-dollar-sign"></i>
               <p className='m-0'>Terjual</p>
             </div>
             <i className="fa-solid fa-angle-right"style={ sell ? colorActive : colorInactive }></i>
-          </ToggleButton>
+          </div>
         </ToggleButtonGroup>
         {console.log("Mobile Button Value: ", buttonGroup)}
       </div>
@@ -90,7 +88,7 @@ return (
         </div>)}
         {like && (<div className="col">
           <div className='most-like'>
-            <img src="/images/NotMostLike.png" className= 'ms-5' alt="" />   
+            <img src="/images/NotMostLike.png" className= 'mt-2' alt="" />   
           </div>
         </div>)}
         {sell && (<div className="col">
