@@ -89,7 +89,7 @@ const Login = () => {
                 <div className='login-form mt-4 ms-5'>
                   <p className='text-center'>
                     Belum Punya Akun?{' '}
-                    <Link to='/users/register' className='link-already-login'>
+                    <Link to='/register' className='link-already-login'>
                       Daftar di sini
                     </Link>
                   </p>
