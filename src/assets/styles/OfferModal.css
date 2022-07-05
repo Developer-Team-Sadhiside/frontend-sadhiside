@@ -1,48 +1,84 @@
-.text_modal {
-  font-size: 14px;
+.offer-modal-dialog {
+  width: 360px;
 }
 
-.card_tawar {
-  display: grid;
-  grid-template-columns: min-content 1fr;
-  background: #eeeeee;
-  border-radius: 16px;
-  font-size: 12px;
-}
-
-.btn-kirim {
-  background-color: #7126b5;
+.offer-modal-content {
   border: none;
-  border-radius: 14px;
-  color: white;
+  border-radius: 16px;
+  padding: 24px 32px;
+}
+
+.offer-modal-header {
+  border: none;
+  padding: 0px;
+}
+
+.offer-modal-body {
+  padding: 0px;
+}
+
+.offer-modal-body-title {
+  font-weight: 500;
   font-size: 14px;
+}
+
+.offer-modal-body-message {
+  font-weight: 400;
+  font-size: 14px;
+  color: #8a8a8a;
+}
+
+.offer-modal-product-card {
+  background: #eeeeee;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.offer-modal-product-card-image {
+  width: 48px;
   height: 48px;
-}
-.card_border_tawar {
-  border: #eeeeee;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
-.input_modal {
-  flex-direction: row;
-  align-items: center;
-  padding: 12px 16px;
+.offer-modal-product-card-title {
+  font-weight: 500;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: 0px;
+}
 
-  gap: 16px;
+.offer-modal-product-card-price {
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 0px;
+}
+
+.offer-modal-body-input-price {
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+
+.offer-modal-body-input-number {
+  height: 48px;
   background: #ffffff;
   border: 1px solid #d0d0d0;
-  border-radius: 14px;
-  border: 1px solid #d0d0d0;
   border-radius: 16px;
+  padding: 12px 16px;
+  width: 100%;
 }
 
-.btn-close {
-  cursor: pointer;
+.offer-modal-footer {
+  border: none;
 }
-.modal-content {
+
+.offer-modal-footer-button {
+  height: 48px;
+  background: #7126b5;
   border-radius: 16px;
-  top: 140px;
-  left: 50px;
-  position: relative;
-  width: 360px;
-  height: 500px;
+  border: none;
+  color: white;
+  margin: 24px 0px 0px;
 }

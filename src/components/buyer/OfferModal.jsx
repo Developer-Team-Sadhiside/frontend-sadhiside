@@ -1,34 +1,34 @@
-import React from "react";
-import "../../assets/styles/OfferModal.css";
-import { useState } from "react";
+import React from 'react';
+import '../../assets/styles/OfferModal.css';
+import {products} from '../../assets/dumps/products';
 
 function OfferModal() {
-  const [tawar] = useState();
   return (
-    <div>
-      <div className="modal fade" id="modal">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div className="body mx-5 my-4 mt-2">
-              <p className="fw-bold">Masukkan Harga Tawarmu</p>
-              <p>Harga tawaranmu akan diketahui penjual, jika penjual cocok kamu akan segera dihubungi penjual.</p>
-              <div className="card_border_tawar card mt-2 rounded-4">
-                <div className="card_tawar card-body">
-                  <img src="/images/produk-tawar.png" />
-                  <div className="col-lg-8 mx-3">
-                    <p className="fw-bold mt-1">Jam Tangan Casio</p>
-                    <div className="text_modal">Rp 250.000</div>
-                  </div>
-                </div>
+    <div className='modal fade' id={`offerModal`} aria-labelledby='offerModalLabel' aria-hidden='true'>
+      <div className='modal-dialog modal-dialog-centered offer-modal-dialog'>
+        <div className='modal-content offer-modal-content'>
+          <div className='modal-header offer-modal-header'>
+            <h5 className='modal-title offer-modal-title'>
+            </h5>
+            <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+          </div>
+          <div className='modal-body offer-modal-body'>
+            <p className='offer-modal-body-title'>Masukkan Harga Tawarmu</p>
+            <p className='offer-modal-body-message'>Harga tawaranmu akan diketahui penual, jika penjual cocok kamu akan segera dihubungi penjual.</p>
+            <div className='row g-0 offer-modal-product-card'>
+              <div className='col-sm-2'>
+                <img src={products[2].image} alt="Product Image" className='offer-modal-product-card-image'/>
               </div>
-              <p className="mt-3">Harga Tawar</p>
-              <p className="mt-3"></p>
-              <input type="harga_tawar" id="harga_tawar" placeholder="Rp 0,00" className="input_modal form-control" autoComplete="true" data-testid="input-harga_tawar" />
+              <div className='col-sm-9 ms-3'>
+                <p className='offer-modal-product-card-title'>{products[2].title}</p>
+                <p className='offer-modal-product-card-price'>Rp. {products[2].price.toLocaleString("id-ID")}</p>
+              </div>
             </div>
-            <button type="button" className="btn-kirim mx-5 my-4 mt-1  ">
+            <p className='offer-modal-body-input-price'>Harga Tawar</p>
+            <input type="text" className='offer-modal-body-input-number' placeholder='Rp 0,00'/>
+          </div>
+          <div className='modal-footer row offer-modal-footer'>
+            <button type='button' className='offer-modal-footer-button' data-bs-dismiss="modal">
               Kirim
             </button>
           </div>
