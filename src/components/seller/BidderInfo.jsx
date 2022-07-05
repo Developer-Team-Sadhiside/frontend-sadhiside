@@ -2,6 +2,7 @@ import React from 'react';
 import '../../assets/styles/BidderInfo.css';
 import { users } from '../../assets/dumps/users';
 import { products } from '../../assets/dumps/products';
+import ProductMatchModal from './ProductMatchModal';
 
 const BidderInfo = () => {
 return (
@@ -44,9 +45,10 @@ return (
               <button className='btn-tolak' id='preview'>
                 Tolak
               </button>
-              <button className='btn-simpan ms-3' id='preview' data-bs-toggle='modal' data-bs-target='#exampleModal'>
+              <button className='btn-simpan ms-3' id='preview' data-bs-toggle='modal' data-bs-target='#productMatchModal'>
                 Terima
               </button>
+              <ProductMatchModal/>
             </div>
           </div>
         </div>

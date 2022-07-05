@@ -1,6 +1,8 @@
 import '../assets/styles/ProductPreview.css';
 import { users } from '../assets/dumps/users';
 import { products } from '../assets/dumps/products';
+import OfferModal from './buyer/OfferModal';
+
 import { Link, useParams } from 'react-router-dom';
 
 export function ProductCarouselPreview() {
@@ -52,7 +54,7 @@ export function EditButtonPreview() {
 export function PurpleButton(props) {
   return (
     <Link to=''>
-      <button type='submit' className='product-card-button-publish-preview'>
+      <button type='submit' className='product-card-button-publish-preview' data-bs-toggle='modal' data-bs-target='#offerModal'>
         {props.content}
       </button>
     </Link>
@@ -110,6 +112,7 @@ export default function ProductPreview() {
           <UserCardPreview />
         </div>
       </div>
+      <OfferModal />
     </div>
   );
 }

@@ -90,7 +90,7 @@ const Register = () => {
                       />
                       <p className='text-center'>
                         Sudah punya akun?{' '}
-                        <Link to='/users/login' className='link-already-registered'>
+                        <Link to='/login' className='link-already-registered'>
                           Masuk di sini
                         </Link>
                       </p>
