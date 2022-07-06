@@ -11,10 +11,10 @@ export function ProductCarouselPreview(props) {
     <div id='productCarouselPreviewControl' className='carousel slide product-carousel-preview'>
       <div className='carousel-inner product-carousel-image-preview'>
         <div className='carousel-item active'>
-          <img src={props.products[props.params.id].image ?? dummyProducts[0].image} className='product-carousel-image-size-preview' />
+          <img src={props?.products[props.params.id]?.image ?? props?.products[props.params.dummyId]?.image} className='product-carousel-image-size-preview' />
         </div>
         <div className='carousel-item'>
-          <img src={props.products[props.params.id].image ?? dummyProducts[0].image} className='product-carousel-image-size-preview' />
+          <img src={props?.products[props.params.id]?.image ?? props?.products[props.params.dummyId]?.image} className='product-carousel-image-size-preview' />
         </div>
       </div>
       <div className='product-carousel-button-preview'>
@@ -33,7 +33,7 @@ export function ProductDescriptionPreview(props) {
   return (
     <div className='product-description-preview'>
       <h3 className='product-description-heading-preview'>Deskripsi</h3>
-      <p className='product-description-description-preview'>{props.products[props.params.id].description ?? dummyProducts[0].description}</p>
+      <p className='product-description-description-preview'>{props?.products[props.params.id]?.description ?? props?.products[props.params.dummyId]?.description}</p>
     </div>
   );
 }
@@ -61,9 +61,9 @@ export function PurpleButton(props) {
 export function ProductCardPreview(props) {
   return (
     <div className='product-card-preview'>
-      <p className='product-card-heading-preview'>{props.products[props.params.id].title ?? dummyProducts[0].title}</p>
-      <p className='product-card-category-preview'>{props.products[props.params.id].category ?? dummyProducts[0].category}</p>
-      <p className='product-card-price-preview'>Rp. {props.products[props.params.id].price.toLocaleString('id-ID') ?? dummyProducts[0].price.toLocaleString('id-ID')}</p>
+      <p className='product-card-heading-preview'>{props?.products[props.params.id]?.title ?? props?.products[props.params.dummyId]?.title}</p>
+      <p className='product-card-category-preview'>{props?.products[props.params.id]?.category ?? props?.products[props.params.dummyId]?.category}</p>
+      <p className='product-card-price-preview'>Rp. {props?.products[props.params.id]?.price.toLocaleString('id-ID') ?? props?.products[props.params.dummyId]?.price.toLocaleString('id-ID')}</p>
       <div className='product-card-button-preview'>
         {props.params.id ? (
           <>
@@ -85,11 +85,11 @@ export function UserCardPreview(props) {
   return (
     <div className='user-card-preview row g-0'>
       <div className='user-card-image-preview col-sm-3'>
-        <img src={props.users[props.params.id].profilePicture ?? dummyUsers[0]?.profilePicture} alt='User Image' className='col-sm-3 user-card-image-size-preview' />
+        <img src={props?.users[props.params.id]?.profilePicture ?? props?.users[props.params.dummyId]?.profilePicture} alt='User Image' className='col-sm-3 user-card-image-size-preview' />
       </div>
       <div className='col user-card-identity-preview'>
-        <div className='user-card-identity-name-preview'>{props.users[props.params.id].name ?? dummyUsers[0]?.name}</div>
-        <div className='user-card-identity-city-preview'>{props.users[props.params.id].city ?? dummyUsers[0]?.city}</div>
+        <div className='user-card-identity-name-preview'>{props?.users[props.params.id]?.name ?? props?.users[props.params.dummyId]?.name}</div>
+        <div className='user-card-identity-city-preview'>{props?.users[props.params.id]?.city ?? props?.users[props.params.dummyId]?.city}</div>
       </div>
     </div>
   );
@@ -102,16 +102,33 @@ export default function ProductPreview() {
 
   return (
     <div className='container mt-4'>
-      <div className='row'>
-        <div className='col-md-6 offset-md-1'>
-          <ProductCarouselPreview products={products} params={params} />
-          <ProductDescriptionPreview products={products} params={params} />
-        </div>
-        <div className='col-md-4'>
-          <ProductCardPreview idModal={`offerModal${products[params.id].id}`} products={products} params={params}/>
-          <UserCardPreview users={users} params={params}/>
-        </div>
-      </div>
+      {params.id ? (
+        <>
+          <div className='row'>
+            <div className='col-md-6 offset-md-1'>
+              <ProductCarouselPreview products={products} params={params} />
+              <ProductDescriptionPreview products={products} params={params} />
+            </div>
+            <div className='col-md-4'>
+              <ProductCardPreview idModal={`offerModal${products[params.id].id}`} products={products} params={params} />
+              <UserCardPreview users={users} params={params} />
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className='row'>
+            <div className='col-md-6 offset-md-1'>
+              <ProductCarouselPreview products={products} params={{ dummyId: 1 }} />
+              <ProductDescriptionPreview products={products} params={{ dummyId: 1 }} />
+            </div>
+            <div className='col-md-4'>
+              <ProductCardPreview idModal={`offerModal${products[1].id}`} products={products} params={{ dummyId: 1 }} />
+              <UserCardPreview users={users} params={{ dummyId: 1 }} />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

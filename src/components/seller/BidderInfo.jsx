@@ -2,7 +2,7 @@ import React from "react";
 import "../../assets/styles/BidderInfo.css";
 import { dummyUsers } from "../../assets/dumps/users";
 import { dummyProducts } from "../../assets/dumps/products";
-import ProductMatchModal from "../ProductPreview";
+import ProductMatchModal from "../seller/ProductMatchModal";
 
 const BidderInfo = () => {
   return (
