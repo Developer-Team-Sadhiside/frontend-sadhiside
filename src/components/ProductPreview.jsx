@@ -1,21 +1,21 @@
 import '../assets/styles/ProductPreview.css';
-import { users } from '../assets/dumps/users';
-import { products } from '../assets/dumps/products';
+import { dummyUsers } from '../assets/dumps/users';
+import { dummyProducts } from '../assets/dumps/products';
 import OfferModal from './buyer/OfferModal';
 
 import { Link, useParams } from 'react-router-dom';
+import { useState } from 'react';
 
-export function ProductCarouselPreview() {
+export function ProductCarouselPreview(props) {
   const params = useParams();
-
   return (
     <div id='productCarouselPreviewControl' className='carousel slide product-carousel-preview'>
       <div className='carousel-inner product-carousel-image-preview'>
         <div className='carousel-item active'>
-          <img src={products[params.id]?.image ?? products[0].image} className='product-carousel-image-size-preview' />
+          <img src={props.products[params.id].image ?? dummyProducts[0].image} className='product-carousel-image-size-preview' />
         </div>
         <div className='carousel-item'>
-          <img src={products[params.id]?.image ?? products[0].image} className='product-carousel-image-size-preview' />
+          <img src={props.products[params.id].image ?? dummyProducts[0].image} className='product-carousel-image-size-preview' />
         </div>
       </div>
       <div className='product-carousel-button-preview'>
@@ -30,13 +30,13 @@ export function ProductCarouselPreview() {
   );
 }
 
-export function ProductDescriptionPreview() {
+export function ProductDescriptionPreview(props) {
   const params = useParams();
 
   return (
     <div className='product-description-preview'>
       <h3 className='product-description-heading-preview'>Deskripsi</h3>
-      <p className='product-description-description-preview'>{products[params.id]?.description ?? products[0].description}</p>
+      <p className='product-description-description-preview'>{props.products[params.id].description ?? dummyProducts[0].description}</p>
     </div>
   );
 }
@@ -54,24 +54,27 @@ export function EditButtonPreview() {
 export function PurpleButton(props) {
   return (
     <Link to=''>
-      <button type='submit' className='product-card-button-publish-preview' data-bs-toggle='modal' data-bs-target='#offerModal'>
+      <button type='submit' className='product-card-button-publish-preview' data-bs-toggle='modal' data-bs-target={`#${props.idModal}`}>
         {props.content}
       </button>
     </Link>
   );
 }
 
-export function ProductCardPreview() {
+export function ProductCardPreview(props) {
   const params = useParams();
 
   return (
     <div className='product-card-preview'>
-      <p className='product-card-heading-preview'>{products[params.id]?.title ?? products[0].title}</p>
-      <p className='product-card-category-preview'>{products[params.id]?.category ?? products[0].category}</p>
-      <p className='product-card-price-preview'>Rp. {products[params.id]?.price.toLocaleString('id-ID') ?? products[0].price}</p>
+      <p className='product-card-heading-preview'>{props.products[params.id].title ?? dummyProducts[0].title}</p>
+      <p className='product-card-category-preview'>{props.products[params.id].category ?? dummyProducts[0].category}</p>
+      <p className='product-card-price-preview'>Rp. {props.products[params.id].price.toLocaleString('id-ID') ?? dummyProducts[0].price.toLocaleString('id-ID')}</p>
       <div className='product-card-button-preview'>
         {params.id ? (
-          <PurpleButton content='Saya Tertarik dan Ingin Nego' />
+          <>
+            <PurpleButton content='Saya Tertarik dan Ingin Nego' idModal={props.idModal} />
+            <OfferModal idModal={props.idModal} products={props.products} params={params}/>
+          </>
         ) : (
           <div>
             <PurpleButton content='Terbitkan' />
@@ -83,36 +86,39 @@ export function ProductCardPreview() {
   );
 }
 
-export function UserCardPreview() {
+export function UserCardPreview(props) {
   const params = useParams();
 
   return (
     <div className='user-card-preview row g-0'>
       <div className='user-card-image-preview col-sm-3'>
-        <img src={users[params.id]?.profilePicture ?? users[0]?.profilePicture} alt='User Image' className='col-sm-3 user-card-image-size-preview' />
+        <img src={props.users[params.id].profilePicture ?? dummyUsers[0]?.profilePicture} alt='User Image' className='col-sm-3 user-card-image-size-preview' />
       </div>
       <div className='col user-card-identity-preview'>
-        <div className='user-card-identity-name-preview'>{users[params.id]?.name ?? users[0]?.name}</div>
-        <div className='user-card-identity-city-preview'>{users[params.id]?.city ?? users[0]?.city}</div>
+        <div className='user-card-identity-name-preview'>{props.users[params.id].name ?? dummyUsers[0]?.name}</div>
+        <div className='user-card-identity-city-preview'>{props.users[params.id].city ?? dummyUsers[0]?.city}</div>
       </div>
     </div>
   );
 }
 
 export default function ProductPreview() {
+  const [products, setProduct] = useState(dummyProducts);
+  const [users, setUsers] = useState(dummyUsers);
+  const params = useParams();
+
   return (
     <div className='container mt-4'>
       <div className='row'>
         <div className='col-md-6 offset-md-1'>
-          <ProductCarouselPreview />
-          <ProductDescriptionPreview />
+          <ProductCarouselPreview products={products} />
+          <ProductDescriptionPreview products={products} />
         </div>
         <div className='col-md-4'>
-          <ProductCardPreview />
-          <UserCardPreview />
+          <ProductCardPreview idModal={`offerModal${products[params.id].id}`} products={products} />
+          <UserCardPreview users={users} />
         </div>
       </div>
-      <OfferModal />
     </div>
   );
 }
