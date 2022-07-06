@@ -1,4 +1,4 @@
-export const users = [
+export const dummyUsers = [
   {
     id: 0,
     name: 'Jhon Cena',
