@@ -1,7 +1,7 @@
 import React from "react";
 import "../../assets/styles/BidderInfo.css";
-import { users } from "../../assets/dumps/users";
-import { products } from "../../assets/dumps/products";
+import { dummyUsers } from "../../assets/dumps/users";
+import { dummyProducts } from "../../assets/dumps/products";
 import ProductMatchModal from "../ProductPreview";
 
 const BidderInfo = () => {
@@ -15,7 +15,7 @@ const BidderInfo = () => {
           <div className="col-sm-6">
             <div className="mt-4">
               <div className="card_profile">
-                <img className="bidder-info" src={users[0].profilePicture} />
+                <img className="bidder-info" src={dummyUsers[0].profilePicture} />
                 <div className="col-md-11">
                   <div className="text_penjual fw-bold mt-3">Nama Pembeli</div>
                   <div className="text_kota ms-3">Kota</div>
@@ -26,7 +26,7 @@ const BidderInfo = () => {
             <div className="bidder_produk mt-4">
               <div className="row g-0">
                 <div className="col-sm-2">
-                  <img src={products[1].image} className="produk-img" />
+                  <img src={dummyProducts[1].image} className="produk-img" />
                 </div>
                 <div className="col-sm-8">
                   <h6 className="text-bidder">Penawaran produk</h6>

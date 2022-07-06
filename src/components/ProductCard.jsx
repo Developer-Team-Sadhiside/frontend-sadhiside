@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../assets/styles/ProductCard.css';
-import { products } from '../assets/dumps/products';
+import { dummyProducts } from '../assets/dumps/products';
 import { Link } from 'react-router-dom';
 
 export function Card(props) {
@@ -21,7 +21,7 @@ export function Card(props) {
 }
 
 export default function CardCollection() {
-  const [product, setProduct] = useState(products);
+  const [product, setProduct] = useState(dummyProducts);
 
   return (
     <div className='container mt-4'>
