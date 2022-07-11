@@ -1,25 +1,45 @@
 import React, { Fragment, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../assets/styles/Login.css';
 import axios from 'axios';
 
 
 const Login = () => {
-    const [inputtext, setinputtext] = useState({
-      password: '',
-    });
+  const [inputtext, setinputtext] = useState({
+    password: '',
+  });
 
-    // Eye Flash Icon
-    const [eye, seteye] = useState(true);
-    const [password, setpassword] = useState('password');
-    const [type, settype] = useState(false);
+  // Eye Flash Icon
+  const [eye, seteye] = useState(true);
+  const [password, setpassword] = useState('password');
+  const [type, settype] = useState(false);
 
-    // Email and password
-    const [email, setEmail] = useState('');
-    const [password2, setPassword2] = useState('');
-    const [navigate, setNavigate] = useState(false);
-    const [error, setError] = useState('');
+  // Email and password
+  const [email, setEmail] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
+    const submitLogin = async (event) => {
+      event.preventDefault();
+      const data = {
+        email: email,
+        password: password
+      }
+  
+      try {
+        const response = await axios.post(
+          "http://localhost:8000/v1/users/login", data
+        );
+  
+        localStorage.setItem('token', response.data.token)
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    
     const onChangeEmail = (e) => {
       const value = e.target.value
       setEmail(value)
@@ -31,26 +51,6 @@ const Login = () => {
       setPassword2(value)
       setError('')
     }
-
-    const submitLogin = () => {
-      const data = {
-        email: email,
-        password: password
-      }
-
-      axios.post('http://localhost:8000/v1/users/login', data)
-        .then(result => {
-          if (result) {
-            localStorage.setItem('token', result.data.token)
-            setNavigate(true)
-
-          }
-        })
-        .catch(e => {
-          setError(e.response.data.message);
-        })
-    }
-
 
     const inputEvent = (event) => {
       const name = event.target.name;
@@ -76,11 +76,6 @@ const Login = () => {
     };
 return (
 <Fragment>
-  {
-  navigate && (
-  <Navigate to="/products/create" replace={true} />
-  )
-  }
   <div className='d-lg-flex half'>
     <div className='bg order-1' style={{ backgroundImage: 'url("/images/secondhand.png")' }} />
     <div className='contents order-2 order-md-1'>
@@ -109,19 +104,6 @@ return (
                   value={password2} onChange={onChangePassword} />
                 <i onClick={Eye} className={`bi ${eye ? 'bi bi-eye-slash' : 'bi bi-eye' }`}></i>
               </div>
-
-              {/* <div className='d-flex mb-5 align-items-center mt-5'>
-                <label className='control control--checkbox mb-0'>
-                  <span className='caption'>Remember me</span>
-                  <input type='checkbox' />
-                  <div className='control__indicator' />
-                </label>
-                <span className='ml-auto'>
-                  <a href='#' className='forgot-pass'>
-                    Forgot Password
-                  </a>
-                </span>
-              </div> */}
               <button type='submit' onClick={submitLogin} className='btn btn-block'>
                 Masuk
               </button>
