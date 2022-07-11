@@ -1,4 +1,4 @@
-export const products = [
+export const dummyProducts = [
   {
     id: 0,
     title: 'Jaket Hitam',

@@ -7,9 +7,8 @@ const Register = () => {
     password: '',
   });
 
-  const [eye, seteye] = useState(true);
-  const [password, setpassword] = useState('password');
-  const [type, settype] = useState(false);
+  const [eye, setEye] = useState(true);
+  const [password, setPassword] = useState('password');
 
   const inputEvent = (event) => {
     const name = event.target.name;
@@ -22,15 +21,13 @@ const Register = () => {
     });
   };
 
-  const Eye = () => {
+  const changeInputPasswordType = () => {
     if (password == 'password') {
-      setpassword('text');
-      seteye(false);
-      settype(true);
+      setPassword('text');
+      setEye(false);
     } else {
-      setpassword('password');
-      seteye(true);
-      settype(false);
+      setPassword('password');
+      setEye(true);
     }
   };
   return (
@@ -50,44 +47,20 @@ const Register = () => {
                       <label className='form-label' htmlFor='nama-lengkap'>
                         Nama
                       </label>
-                      <input
-                        type='text'
-                        className='form-control'
-                        placeholder='Nama Lengkap'
-                        id='nama-lengkap'
-                      />
+                      <input type='text' className='form-control' placeholder='Nama Lengkap' id='nama-lengkap' />
                       <label className='form-label' htmlFor='email'>
                         Email
                       </label>
-                      <input
-                        type='email'
-                        className='form-control'
-                        placeholder='Contoh: johndoe@gmail.com'
-                        id='email'
-                      />
+                      <input type='email' className='form-control' placeholder='Contoh: johndoe@gmail.com' id='email' />
                       <label className='form-label' htmlFor='password'>
                         Password
                       </label>
                       <div className='form-group'>
-                        <input
-                          type={password}
-                          className='form-control'
-                          placeholder='Masukkan password'
-                          value={inputtext.password}
-                          onChange={inputEvent}
-                          name='password'
-                        />
-                        <i
-                          onClick={Eye}
-                          className={`bi ${eye ? 'bi-eye-slash' : 'bi-eye'}`}
-                        ></i>
+                        <input type={password} className='form-control' placeholder='Masukkan password' value={inputtext.password} onChange={inputEvent} name='password' />
+                        <span onClick={changeInputPasswordType}>{eye ?<img src='/svg/fi_eye-off.svg' alt='Eye Icon' className='register-eye-icon' /> : <img src='/svg/fi_eye.svg' alt='Eye Icon' className='register-eye-icon' />}</span>
                       </div>
 
-                      <input
-                        type='submit'
-                        className='form-control register-button btn'
-                        value='Daftar'
-                      />
+                      <input type='submit' className='form-control register-button btn' value='Daftar' />
                       <p className='text-center'>
                         Sudah punya akun?{' '}
                         <Link to='/login' className='link-already-registered'>

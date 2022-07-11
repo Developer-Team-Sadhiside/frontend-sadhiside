@@ -77,17 +77,9 @@
   margin-top: 40px;
 }
 
-.bi-eye-slash {
+.register-eye-icon {
   position: relative;
-  left: 93%;
-  top: -37px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.bi-eye {
-  position: relative;
-  left: 93%;
+  left: 92%;
   top: -37px;
   font-size: 15px;
   cursor: pointer;

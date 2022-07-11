@@ -88,7 +88,7 @@ return (
         </div>)}
         {like && (<div className="col">
           <div className='most-like'>
-            <img src="/images/NotMostLike.png" className= 'mt-2' alt="" />   
+            <img src="/svg/empty-product-illustration.svg" className= 'mt-2' alt="" />   
           </div>
         </div>)}
         {sell && (<div className="col">
