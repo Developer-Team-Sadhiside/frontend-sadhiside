@@ -1,45 +1,48 @@
 import React, { Fragment, useState } from 'react';
+import {toast} from 'react-toastify'
 import { Link, useNavigate } from 'react-router-dom';
 import '../assets/styles/Login.css';
 import axios from 'axios';
 
-
 const Login = () => {
-  const [inputtext, setinputtext] = useState({
-    password: '',
-  });
+    const [inputtext, setinputtext] = useState({
+      password: '',
+    });
 
-  // Eye Flash Icon
-  const [eye, seteye] = useState(true);
-  const [password, setpassword] = useState('password');
-  const [type, settype] = useState(false);
+    // Eye Flash Icon
+    const [eye, seteye] = useState(true);
+    const [password, setPassword] = useState('password');
+    const [type, settype] = useState(false);
 
-  // Email and password
-  const [email, setEmail] = useState('');
-  const [password2, setPassword2] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+    // Email and password
+    const [email, setEmail] = useState('');
+    const [password2, setPassword2] = useState('');
+
+    const [error, setError] = useState('');
+
+    const navigate = useNavigate();
 
     const submitLogin = async (event) => {
       event.preventDefault();
       const data = {
         email: email,
-        password: password
+        password: password2
       }
-  
+      
       try {
         const response = await axios.post(
-          "http://localhost:8000/v1/users/login", data
-        );
-  
+          "http://localhost:8000/api/v1/users/login", data
+        )
         localStorage.setItem('token', response.data.token)
-        navigate("/");
+        navigate("/")
       } catch (error) {
-        console.log(error);
+        // toast.error('Bad User Credentials',{
+        //   position: "top-center",
+        // })
+        setError(error.response.data.message);
       }
     }
 
-    
     const onChangeEmail = (e) => {
       const value = e.target.value
       setEmail(value)
@@ -65,16 +68,17 @@ const Login = () => {
 
     const Eye = () => {
       if (password == 'password') {
-        setpassword('text');
+        setPassword('text');
         seteye(false);
         settype(true);
       } else {
-        setpassword('password');
+        setPassword('password');
         seteye(true);
         settype(false);
       }
     };
-return (
+    return (
+
 <Fragment>
   <div className='d-lg-flex half'>
     <div className='bg order-1' style={{ backgroundImage: 'url("/images/secondhand.png")' }} />
@@ -85,14 +89,14 @@ return (
             <div className='mb-4'>
               <h3 className='title-login'>Masuk</h3>
             </div>
-            {
-            error && (
-            <div className="alert alert-danger">
-              <p>{error}</p>
-            </div>
-            )
-            }
             <form>
+              {
+              error && (
+              <div className="alert alert-danger">
+                <p>{error}</p>
+              </div>
+              )
+              }
               <div className='form-group first'>
                 <label>email</label>
                 <input type='text' className='form-control' placeholder='Masukan Email' value={email}
@@ -121,7 +125,7 @@ return (
       </div>
     </div>
   </div>
-</Fragment>
+  </Fragment>
 );
 };
 
