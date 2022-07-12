@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function CreateProduct() {
+  const token = localStorage.getItem('token');
   const [deskripsi, setDeskripsi] = useState();
   const [nama_produk, setNama_Produk] = useState("");
   const [harga_produk, setHarga_Produk] = useState("");
@@ -33,9 +34,10 @@ export default function CreateProduct() {
       await axios.post("http://localhost:8000/api/v1/addProduct", formData, {
         headers: {
           "Content-type": "multipart/form-data",
+          Authorization: 'Bearer ' + token,
         },
       });
-      navigate("/products/create/preview");
+      navigate("/dashboard/seller");
     } catch (error) {
       console.log(error);
     }
