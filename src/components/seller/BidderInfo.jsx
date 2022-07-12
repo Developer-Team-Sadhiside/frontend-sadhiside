@@ -2,7 +2,7 @@ import React from "react";
 import "../../assets/styles/BidderInfo.css";
 import { dummyUsers } from "../../assets/dumps/users";
 import { dummyProducts } from "../../assets/dumps/products";
-import ProductMatchModal from "../seller/ProductMatchModal";
+// import ProductMatchModal from "../seller/ProductMatchModal";
 
 const BidderInfo = () => {
   return (
@@ -48,7 +48,7 @@ const BidderInfo = () => {
                   <button className="btn-simpan ms-3" id="preview" data-bs-toggle="modal" data-bs-target="#productMatchModal">
                     Terima
                   </button>
-                  <ProductMatchModal />
+                  {/* <ProductMatchModal /> */}
                 </div>
               </div>
             </div>
