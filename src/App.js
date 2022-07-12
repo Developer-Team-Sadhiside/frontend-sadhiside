@@ -1,9 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import 'react-toastify/dist/ReactToastify.css';
 
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { ToastContainer } from "react-toastify";
 import LandingPage from "./pages/LandingPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
@@ -31,6 +32,7 @@ function App() {
 
         <Route path="/dashboard/seller" element={<DashboardSellerPage />} />
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
   );
 }
