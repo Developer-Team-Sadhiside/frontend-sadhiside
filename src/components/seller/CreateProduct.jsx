@@ -9,7 +9,7 @@ export default function CreateProduct() {
   const [nama_produk, setNama_Produk] = useState("");
   const [harga_produk, setHarga_Produk] = useState("");
   const [kategori, setKategori] = useState("");
-  const [file, setFile] = useState("");
+  const [gambar, setGambar] = useState("");
   // const [preview, setPreview] = useState();
   const [preview, setPreview] = useState();
   const navigate = useNavigate();
@@ -18,14 +18,14 @@ export default function CreateProduct() {
 
   const loadImage = (e) => {
     const image = e.target.files[0];
-    setFile(image);
+    setGambar(image);
     setPreview(URL.createObjectURL(image));
   };
 
   const createProducts = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append("gambar", gambar);
     formData.append("nama_produk", nama_produk);
     formData.append("harga_produk", harga_produk);
     formData.append("kategori", kategori);
@@ -44,16 +44,16 @@ export default function CreateProduct() {
   };
 
   useEffect(() => {
-    if (file) {
+    if (gambar) {
       const reader = new FileReader();
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(gambar);
       reader.onload = function (e) {
         setPreview(reader.result);
       };
     } else {
       setPreview(null);
     }
-  }, [file]);
+  }, [gambar]);
 
   // function restrictAlphabets(input) {
   //   const value = input.replace(/\D/g, '');
@@ -127,11 +127,11 @@ export default function CreateProduct() {
                 ref={fileInputRef}
                 accept='image/*'
                 onChange={(event) => {
-                  const file = event.target.files[0];
-                  if (file) {
-                    setFile(file);
+                  const gambar = event.target.files[0];
+                  if (gambar) {
+                    setGambar(gambar);
                   } else {
-                    setFile(null);
+                    setGambar(null);
                   }
                 }}
               />
