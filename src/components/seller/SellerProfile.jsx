@@ -7,7 +7,7 @@ return (
 <div>
   <div className="container">
     <div className="row justifty-content-center">
-      <div className="col-lg-10">
+      <div className="col-lg-12">
         <div className="daftar_jual fw-bold mt-5">Daftar Jual Saya</div>
         <div className="rounded-5">
           <div className='profile_seller'>

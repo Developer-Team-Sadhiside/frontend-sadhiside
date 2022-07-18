@@ -60,8 +60,9 @@ const getProductsSeller = async () => {
 
 return (
 <div className='container' style={{ marginTop:'90px' }}>
-  <div className='row'>
-    <div className='col-lg-3 p-0 py-2' style={{ marginLeft:"85px" }}>
+  <div className="row">
+  <div className='col-3 p-0 py-2'>
+    <div className='row'>
       <div className='category-product-list'>
         <ToggleButtonGroup type="radio" name="category-mobile-version" value={buttonGroup}
           className='button-group-custom' onChange={(event)=> {
@@ -76,7 +77,6 @@ return (
             </div>
             <i className="fa-solid fa-angle-right" style={ all ? colorActive : colorInactive }></i>
           </div>
-
           <div id="radio-button-2" value={"Diminati"} onClick={handleLike} className='btn-group-category bb-category'>
             <div className='d-flex justify-content-center align-items-center' style={ like ? colorActive : colorInactive
               }>
@@ -97,46 +97,45 @@ return (
         {console.log("Mobile Button Value: ", buttonGroup)}
       </div>
     </div>
-    <div className="col-lg-9 p-0">
-      <div className="row">
-        {all && (<div className="col">
-          <div className='add-product-box p-2 text-center text-secondary' onClick={()=>
+  </div>
+  <div className="col-9 p-0 py-2 px-5">
+    <div className="row justify-content-start row-cols-lg-4">
+      {all && (
+      <>
+        <div className='col'>
+          <div className='add-product-box text-center' onClick={()=>
             {navigate("/products/create")}}>
             <img src="/images/Plus_icon.png" style={{ width:"30px" }} className='mb-3' alt="" />
             <p>Semua Produk</p>
           </div>
-          {productsSeller.map((productsSeller) => {
-          console.log(productsSeller)
-          return (
-          <div className='card-product-seller col-sm-4' key={productsSeller.id}>
-            <Link to="/products/preview/:id" style={{ textDecoration: 'none' }}>
-            <div className='img-wrapper'>
-              <img className='card-img-top-seller' src={productsSeller.gambar} />
-            </div>
-            <div>
-              <h5 className='product-title-seller'>{productsSeller.nama_produk}</h5>
-              <p className='product-category-seller'>{productsSeller.kategori}</p>
-              <p className='price-product-seller'>Rp {productsSeller.harga_produk}</p>
-            </div>
-            </Link>
-          </div>
-          )
-          })}
         </div>
-        )}
-        {like && (<div className="col">
-          <div className='most-like'>
-            <img src="/svg/empty-product-illustration.svg" className='mt-2' alt="" />
-          </div>
-        </div>)}
-        {sell && (<div className="col">
-          <div className='sold' onClick={()=>
-            {navigate("/dashboard/seller/sell")}}>
+        {productsSeller.map((productsSeller) => {
+        return (
+        <div className='col card-product-seller' key={productsSeller.id}>
+          <div className='p-1'>
+            <img className='card-img-top-seller' src={productsSeller.gambar} />
+            <h5 className='product-title-seller'>{productsSeller.nama_produk}</h5>
+            <p className='product-category-seller'>{productsSeller.kategori}</p>
+            <p className='price-product-seller'>Rp {productsSeller.harga_produk}</p>
           </div>
         </div>
-        )}
+        )
+        })}
+      </>
+      )}
+      {like && (<div className="col">
+        <div className='most-like'>
+          <img src="/svg/empty-product-illustration.svg" className='mt-2' alt="" />
+        </div>
+      </div>)}
+      {sell && (<div className="col">
+        <div className='sold' onClick={()=>
+          {navigate("/dashboard/seller/sell")}}>
+        </div>
       </div>
+      )}
     </div>
+  </div>
   </div>
 </div>
 )
