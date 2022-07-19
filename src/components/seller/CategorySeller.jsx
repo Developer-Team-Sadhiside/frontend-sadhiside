@@ -73,7 +73,7 @@ const CategorySeller = () => {
       },
     });
     setProductsSellerInterest(response.data.produk);
-    // console.log(response.data.produk);
+    console.log(response.data.produk);
   };
 
   const getProductsSellerSold = async () => {
