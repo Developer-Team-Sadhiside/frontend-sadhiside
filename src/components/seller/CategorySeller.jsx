@@ -111,7 +111,7 @@ return (
         </div>
         {productsSeller.map((productsSeller) => {
         return (
-        <div className='col card-product-seller' key={productsSeller.id}>
+        <div className='col card-product-seller' onClick={() =>{navigate("/products/create/preview")}} key={productsSeller.id}>
           <div className='p-1'>
             <img className='card-img-top-seller' src={productsSeller.gambar} />
             <h5 className='product-title-seller'>{productsSeller.nama_produk}</h5>
