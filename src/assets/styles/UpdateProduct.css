@@ -1,0 +1,85 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.create-product-container .back {
+  cursor: pointer;
+  margin-top: 13px;
+}
+
+.create-product-form {
+  margin: 0px auto;
+}
+
+.create-product-form label {
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+.create-product-form input,
+.create-product-form select,
+.create-product-form select:focus,
+.create-product-form textarea {
+  padding: 12px 16px;
+  gap: 16px;
+  height: 48px;
+  border: 1px solid #d0d0d0;
+  border-radius: 16px;
+  box-shadow: none !important;
+}
+
+.create-product-form input:focus,
+.create-product-form textarea:focus {
+  border: 1px solid #d0d0d0;
+}
+
+.create-product-form .description {
+  height: 80px;
+}
+
+.create-product-form .picture {
+  width: 96px;
+  height: 96px;
+  border: 2px dashed #d0d0d0;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+}
+
+.create-product-form .image-uploaded {
+  object-fit: cover;
+  height: 96px;
+  width: 96px;
+  border-radius: 12px;
+}
+
+.create-product-form .preview {
+  background: #ffffff;
+  border: 1px solid #7126b5;
+  color: #151515;
+}
+
+.create-product-form .terbitkan {
+  background: #7126b5;
+  color: #ffffff;
+  border: none;
+}
+
+.create-product-form .preview,
+.create-product-form .terbitkan {
+  height: 48px;
+  border-radius: 16px;
+  margin: 4px 10px;
+}
+
+textarea {
+  resize: none;
+}
