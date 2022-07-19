@@ -153,7 +153,6 @@ const CategorySeller = () => {
                         }}
                         key={productsSeller.id}
                       >
-=======
                         <img className="card-img-top-seller" src={productsSeller.gambar} />
                         <h5 className="product-title-seller">{productsSeller.nama_produk}</h5>
                         <p className="product-category-seller">{productsSeller.kategori}</p>
