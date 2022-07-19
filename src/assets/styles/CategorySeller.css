@@ -10,20 +10,10 @@
   border: 2px dashed #d0d0d0;
   border-radius: 16px;
   cursor: pointer;
+  margin-left: 20px;
 }
 
 .card-product-seller {
-  /* display: flex;
-  background: #FFFFFF;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  position: absolute;
-  margin-left: 650px;
-  margin-top: -200px;
-  width: 206.67px;
-  height: 210px;
-  object-fit: cover; */
-  /* width: 181.33px; */
   width: 206.67px;
   display: flex;
   margin-left: 30px;
@@ -48,12 +38,20 @@
 .card-product-sold {
   width: 206.67px;
   display: flex;
-  margin-left: 30px;
+  margin-left: 20px;
   height: 210px;
   border-radius: 4px;
   object-fit: cover;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+}
+
+.card-list-product {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 668px;
+  height: 198px;
 }
 
 .card-product-sold:hover {
@@ -79,6 +77,7 @@
 }
 .img-wrapper {
   margin-left: 15px;
+  margin-top: 3px;
 }
 .price-product-seller {
   /* font-weight: 400;

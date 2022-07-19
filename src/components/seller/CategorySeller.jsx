@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../assets/styles/CategorySeller.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 import axios from "axios";
 
@@ -145,8 +145,14 @@ const CategorySeller = () => {
                 </div>
                 {productsSeller.map((productsSeller) => {
                   return (
-                    <div className="col card-product-seller" key={productsSeller.id}>
-                      <div className="p-1">
+                    <div className="col card-product-seller">
+                      <div
+                        className="p-1"
+                        onClick={() => {
+                          navigate(`/products/seller/update/${productsSeller.id}`);
+                        }}
+                        key={productsSeller.id}
+                      >
                         <img className="card-img-top-seller" src={productsSeller.gambar} />
                         <h5 className="product-title-seller">{productsSeller.nama_produk}</h5>
                         <p className="product-category-seller">{productsSeller.kategori}</p>
@@ -160,12 +166,18 @@ const CategorySeller = () => {
             {/* get product by like */}
             {like && (
               <>
-                <div className="col">
+                <div className="card-list-product ">
                   <div>{productsSellerInterest.data.length == 0 && <img src="/svg/empty-product-illustration.svg" className="image-like" alt="" />}</div>
                   {productsSellerInterest.data.length > 0 &&
                     productsSellerInterest.data.map((productsSellerInterest) => {
                       return (
-                        <div className="card-product-sold" key={productsSellerInterest.id}>
+                        <div
+                          className="card-product-sold"
+                          onClick={() => {
+                            navigate(`/products/seller/update/${productsSellerInterest.id}`);
+                          }}
+                          key={productsSellerInterest.id}
+                        >
                           <div className="img-wrapper">
                             <img className="card-img-top-seller" src={productsSellerInterest.gambar} />
                             <h5 className="product-title-seller">{productsSellerInterest.nama_produk}</h5>
@@ -182,13 +194,19 @@ const CategorySeller = () => {
 
             {/* get product by sold */}
             {sell && (
-              <div className="col">
+              <div className="card-list-product">
                 <div>{productsSellerSold.data.length == 0 && <img src="/svg/Frame 34.svg" className="image-like" alt="" />}</div>
                 {productsSellerSold.data.length > 0 &&
                   productsSellerSold.data.map((productsSellerSold) => {
                     console.log(productsSellerSold);
                     return (
-                      <div className="card-product-sold" key={productsSellerSold.id}>
+                      <div
+                        className="card-product-sold"
+                        onClick={() => {
+                          navigate(`/products/seller/update/${productsSellerSold.id}`);
+                        }}
+                        key={productsSellerSold.id}
+                      >
                         <div className="img-wrapper">
                           <img className="card-img-top-seller" src={productsSellerSold.gambar} />
                           <h5 className="product-title-seller">{productsSellerSold.nama_produk}</h5>
