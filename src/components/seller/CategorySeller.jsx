@@ -145,7 +145,6 @@ const CategorySeller = () => {
                 </div>
                 {productsSeller.map((productsSeller) => {
                   return (
-<<<<<<< HEAD
                     <div className="col card-product-seller">
                       <div
                         className="p-1"
@@ -155,11 +154,6 @@ const CategorySeller = () => {
                         key={productsSeller.id}
                       >
 =======
-                    <div className="col card-product-seller" onClick={() => {
-                      navigate("/products/create/preview")
-                    }} key={productsSeller.id}>
-                      <div className="p-1">
->>>>>>> ffbbd31ef0667f8dc82fe111f0dfa99995bf1c69
                         <img className="card-img-top-seller" src={productsSeller.gambar} />
                         <h5 className="product-title-seller">{productsSeller.nama_produk}</h5>
                         <p className="product-category-seller">{productsSeller.kategori}</p>
