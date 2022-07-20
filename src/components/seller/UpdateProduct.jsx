@@ -1,9 +1,9 @@
-import '../../assets/styles/CreateProduct.css';
+import '../../assets/styles/UpdateProduct.css';
 import { useRef, useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-export default function CreateProduct() {
+export default function UpdateProduct() {
   const token = localStorage.getItem('token');
   const [deskripsi, setDeskripsi] = useState();
   const [nama_produk, setNama_Produk] = useState("");
@@ -13,6 +13,7 @@ export default function CreateProduct() {
   const [preview, setPreview] = useState();
   const navigate = useNavigate();
   const fileInputRef = useRef();
+  const { id } = useParams();
 
 
   const loadImage = (e) => {
@@ -21,7 +22,13 @@ export default function CreateProduct() {
     setPreview(URL.createObjectURL(image));
   };
 
-  const createProducts = async (e) => {
+  const handleFile = (e) => {
+    e.preventDefault();
+    setGambar(e.target.files[0]);
+    setPreview(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const updateProducts = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("gambar", gambar);
@@ -29,8 +36,9 @@ export default function CreateProduct() {
     formData.append("harga_produk", harga_produk);
     formData.append("kategori", kategori);
     formData.append("deskripsi", deskripsi);
+
     try {
-      await axios.post("http://localhost:8000/api/v1/addProduct", formData, {
+      await axios.put(`http://localhost:8000/api/v1/product/${id}`, formData, {
         headers: {
           "Content-type": "multipart/form-data",
           Authorization: 'Bearer ' + token,
@@ -42,18 +50,34 @@ export default function CreateProduct() {
     }
   };
 
-  useEffect(() => {
-    if (gambar) {
-      const reader = new FileReader();
-      reader.readAsDataURL(gambar);
-      reader.onload = function (e) {
-        setPreview(reader.result);
-      };
-    } else {
-      setPreview(null);
-    }
-  }, [gambar]);
+  useState(async () => {
+    const response = await axios.get(`http://localhost:8000/api/v1/getOneProduct/${id}`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      }
+    });
 
+    setGambar(response.data.produk.gambar);
+    setNama_Produk(response.data.produk.nama_produk);
+    setHarga_Produk(response.data.produk.harga_produk);
+    setDeskripsi(response.data.produk.deskripsi);
+    setKategori(response.data.produk.kategori);
+    setPreview(response.data.produk.url);
+  });
+
+
+  // useEffect(() => {
+  //   getProductById()
+  //   if (gambar) {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(gambar);
+  //     reader.onload = function (e) {
+  //       setPreview(reader.result);
+  //     };
+  //   } else {
+  //     setPreview(null);
+  //   }
+  // }, [gambar]);
 
   return (
     <div className='create-product-container container mt-3'>
@@ -67,7 +91,7 @@ export default function CreateProduct() {
         </div>
         <div className='col-sm-6'>
           <div className='create-product-form'>
-            <form onSubmit={createProducts}>
+            <form onSubmit={updateProducts}>
               <label className='create-product-label'>Nama Produk</label>
               <input
                 type='text'
@@ -111,7 +135,7 @@ export default function CreateProduct() {
                 {preview ? (
                   <img src={preview} alt='' className='image-uploaded' />
                 ) : (
-                  <img src='/svg/fi_plus.svg' alt='' className='plus-svg' />
+                  <img src={gambar} alt='' className='image-uploaded' />
                 )}
               </div>
 
@@ -121,14 +145,7 @@ export default function CreateProduct() {
                 style={{ display: 'none'}}
                 ref={fileInputRef}
                 accept='image/*'
-                onChange={(event) => {
-                  const gambar = event.target.files[0];
-                  if (gambar) {
-                    setGambar(gambar);
-                  } else {
-                    setGambar(null);
-                  }
-                }}
+                onChange={handleFile}
               />
                 <div className='row mt-4'>
                   <button className='col preview'>Preview</button>
