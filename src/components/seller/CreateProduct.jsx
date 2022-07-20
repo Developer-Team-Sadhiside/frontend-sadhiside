@@ -10,7 +10,6 @@ export default function CreateProduct() {
   const [harga_produk, setHarga_Produk] = useState("");
   const [kategori, setKategori] = useState("");
   const [gambar, setGambar] = useState("");
-  // const [preview, setPreview] = useState();
   const [preview, setPreview] = useState();
   const navigate = useNavigate();
   const fileInputRef = useRef();
@@ -55,10 +54,6 @@ export default function CreateProduct() {
     }
   }, [gambar]);
 
-  // function restrictAlphabets(input) {
-  //   const value = input.replace(/\D/g, '');
-  //   setPrice(value);
-  // }
 
   return (
     <div className='create-product-container container mt-3'>
