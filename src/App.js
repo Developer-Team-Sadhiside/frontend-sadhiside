@@ -13,6 +13,8 @@ import RegisterAsSellerPage from "./pages/RegisterAsSellerPage";
 import ProductPreviewPage from "./pages/ProductPreviewPage";
 import BidderPage from "./pages/BidderPage";
 import DashboardSellerPage from "./pages/DashboardSellerPage";
+import UpdateProductPage from "./pages/UpdateProductPage";
+
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
 
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/register/seller" element={<RegisterAsSellerPage />} />
-
+        <Route path="/products/seller/update/:id" element={<UpdateProductPage />} />
         <Route path="/products/create" element={<CreateProductPage />} />
         <Route path="/products/create/preview" element={<ProductPreviewPage />} />
         <Route path="/products/preview/:id" element={<ProductPreviewPage />} />
