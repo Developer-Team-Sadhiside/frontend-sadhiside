@@ -15,8 +15,9 @@ export default function UpdateProduct() {
   const fileInputRef = useRef();
   const { id } = useParams();
 
-
-  const getProductById = async () => {
+  /**
+   * INI GAK USAH, LGSUNG DI USE STATE AJA   
+    const getProductById = async () => {
     const response = await axios.get(`http://localhost:8000/api/v1/getOneProduct/${id}`, {
       headers: {
         Authorization: 'Bearer ' + token,
@@ -30,11 +31,19 @@ export default function UpdateProduct() {
     setKategori(response.data.produk.kategori);
     setPreview(response.data.produk.url);
   };
+  */
 
   const loadImage = (e) => {
+    e.preventDefault();
     const image = e.target.files[0];
     setGambar(image);
     setPreview(URL.createObjectURL(image));
+  };
+
+  const handleFile = (e) => {
+    e.preventDefault();
+    setGambar(e.target.files[0]);
+    setPreview(URL.createObjectURL(e.target.files[0]));
   };
 
   const updateProducts = async (e) => {
@@ -59,6 +68,24 @@ export default function UpdateProduct() {
     }
   };
 
+  // ganti yang use effect
+  useState(async () => {
+    const response = await axios.get(`http://localhost:8000/api/v1/getOneProduct/${id}`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      }
+    });
+
+    setGambar(response.data.produk.gambar);
+    setNama_Produk(response.data.produk.nama_produk);
+    setHarga_Produk(response.data.produk.harga_produk);
+    setDeskripsi(response.data.produk.deskripsi);
+    setKategori(response.data.produk.kategori);
+    setPreview(response.data.produk.url);
+  });
+
+  /** 
+   * INI YANG BIKIN ERROR, dia kan jalan tiap ada perubahan.
   useEffect(() => {
     getProductById()
     if (gambar) {
@@ -71,6 +98,7 @@ export default function UpdateProduct() {
       setPreview(null);
     }
   }, [gambar]);
+  */
 
   return (
     <div className='create-product-container container mt-3'>
@@ -114,7 +142,7 @@ export default function UpdateProduct() {
                 className='form-control description'
                 placeholder='Contoh: Jalan Ikan Hiu 33'
                 value={deskripsi}
-                onChange= {(e) => setDeskripsi(e.target.value)}
+                onChange={(e) => setDeskripsi(e.target.value)}
               ></textarea>
 
               <label className='create-product-label'>Foto Produk</label>
@@ -128,29 +156,22 @@ export default function UpdateProduct() {
                 {preview ? (
                   <img src={preview} alt='' className='image-uploaded' />
                 ) : (
-                  <img src='/svg/fi_plus.svg' alt='' className='plus-svg' />
+                  <img src={gambar} alt='' className='image-uploaded' />
                 )}
               </div>
 
               <input
                 type='file'
                 className='form-control'
-                style={{ display: 'none'}}
+                style={{ display: 'none' }}
                 ref={fileInputRef}
                 accept='image/*'
-                onChange={(event) => {
-                  const gambar = event.target.files[0];
-                  if (gambar) {
-                    setGambar(gambar);
-                  } else {
-                    setGambar(null);
-                  }
-                }}
+                onChange={handleFile}
               />
-                <div className='row mt-4'>
-                  <button className='col preview'>Preview</button>
-                  <button className='col terbitkan' type='submit'>Terbitkan</button>
-                </div>
+              <div className='row mt-4'>
+                <button className='col preview'>Preview</button>
+                <button className='col terbitkan' type='submit'>Terbitkan</button>
+              </div>
             </form>
           </div>
         </div>
