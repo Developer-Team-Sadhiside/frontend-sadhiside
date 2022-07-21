@@ -116,12 +116,19 @@ export function EditButton() {
 }
 
 export function PurpleButton(props) {
+  const navigate = useNavigate();
   return (
-    <Link to="/dashboard/seller">
-      <button type="submit" className="product-card-button-publish-preview" data-bs-toggle="modal" data-bs-target={`#${props.idModal}`}>
-        Terbitkan
-      </button>
-    </Link>
+    <button
+      type="submit"
+      className="product-card-button-publish-preview"
+      onClick={() => {
+        navigate(`/dashboard/seller`);
+      }}
+      data-bs-toggle="modal"
+      data-bs-target={`#${props.idModal}`}
+    >
+      Terbitkan
+    </button>
   );
 }
 
@@ -157,7 +164,7 @@ export function ProductCardPreview(props) {
           </>
         ) : (
           <div>
-            <PurpleButton content="Terbitkan" />
+            <PurpleButton content="" />
             <EditButton />
           </div>
         )}
