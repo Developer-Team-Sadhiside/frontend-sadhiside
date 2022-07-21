@@ -1,10 +1,10 @@
-import ProductPreview from '../components/ProductPreview';
-import Navbar from '../components/Navbar';
+import ProductPreview from "../components/seller/ProductPreview";
+import Navbar from "../components/Navbar";
 
 export default function ProductPreviewPage() {
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <ProductPreview />;
     </>
   );
