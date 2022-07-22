@@ -84,7 +84,6 @@ export function ProductProvider({ children }) {
   };
 
   async function productLikeHandler(id) {
-    console.log(id);
     if (!checkUserLogin()) {
       navigate('/login');
     } else {
