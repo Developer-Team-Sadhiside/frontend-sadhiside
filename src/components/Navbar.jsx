@@ -62,7 +62,6 @@ function User() {
 function Notif() {
   const [hidden, setHidden] = useState(false);
   const productContext = useProductContext();
-
   useEffect(() => {
     productContext.getProductsOffered();
   }, []);
