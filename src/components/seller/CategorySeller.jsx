@@ -136,7 +136,7 @@ const CategorySeller = () => {
                   <div
                     className="category-add-product-box text-center"
                     onClick={() => {
-                      navigate("/products/create");
+                      navigate("/dashboard/seller/createproduct");
                     }}
                   >
                     <img src="/images/Plus_icon.png" style={{ width: "30px" }} className="mb-3" alt="" />
