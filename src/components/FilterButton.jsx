@@ -1,7 +1,10 @@
 import '../assets/styles/FilterButton.css';
 import { useState } from 'react';
+import { useProductContext } from '../services/productService';
 
-const FilterButton = () => {
+const FilterButton = (props) => {
+  const productContext = useProductContext();
+
   const [filterActive, setFilterActive] = useState({
     activeObject: { value: 'Semua' },
     objects: [{ value: 'Semua' }, { value: 'Hobi' }, { value: 'Kendaraan' }, { value: 'Baju' }, { value: 'Elektronik' }, { value: 'Kesehatan' }],
@@ -29,6 +32,7 @@ const FilterButton = () => {
             className={toggleActiveStyle(index)}
             onClick={() => {
               toggleActiveFilter(index);
+              productContext.filterProduct(elements.value);
             }}
           >
             <i className='bi bi-search filter-icon'></i>

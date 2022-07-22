@@ -1,17 +1,20 @@
 import Navbar from '../components/Navbar';
 import Carousel from '../components/Carousel';
 import CardCollection from '../components/ProductCard';
-import FilterButton from '../components/FilterButton';
 import SellButton from '../components/SellButton';
+import FilterButton from '../components/FilterButton';
+import { ProductProvider } from '../services/productService';
 
 export default function LandingPage() {
   return (
     <>
-      <Navbar />
-      <Carousel />
-      <FilterButton />
-      <CardCollection />
-      <SellButton />
+      <ProductProvider>
+        <Navbar />
+        <Carousel />
+        <FilterButton />
+        <CardCollection />
+        <SellButton />
+      </ProductProvider>
     </>
   );
 }
