@@ -3,7 +3,7 @@ import '../../assets/styles/ProductMatchModal.css';
 export default function ProductMatchModal(props) {
   return (
     <>
-      <div className='modal fade' id='productMatchModal' tabIndex={-1} aria-labelledby='productMatchModalLabel' aria-hidden='true'>
+      <div className='modal fade' id={props.idModal} tabIndex={-1} aria-labelledby='productMatchModalLabel' aria-hidden='true'>
         <div className='modal-dialog modal-dialog-centered product-match-dialog-modal'>
           <div className='modal-content product-match-container-modal'>
             <div className='modal-header product-match-header-modal'>
@@ -16,31 +16,31 @@ export default function ProductMatchModal(props) {
                 <p className='text-center product-match-body-message-modal'>Product Match</p>
                 <div className='row g-0'>
                   <div className='col-sm-3'>
-                    <img className='product-match-body-card-img-modal' src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80' alt='' />
+                    <img className='product-match-body-card-img-modal' src={props?.data?.User?.foto} alt='' />
                   </div>
                   <div className='col'>
-                    <p className='product-match-body-card-buyer-name-modal'>Nama Pembeli</p>
-                    <p className='product-match-body-card-buyer-city-modal'>Kota</p>
+                    <p className='product-match-body-card-buyer-name-modal'>{props?.data?.User?.nama}</p>
+                    <p className='product-match-body-card-buyer-city-modal'>{props?.data?.User?.kota}</p>
                   </div>
                 </div>
                 <div className='row g-0 mt-2'>
                   <div className='col-sm-3'>
-                    <img className='product-match-body-card-img-modal' src='https://images.unsplash.com/photo-1608319875609-c87179687233?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNhciUyMHZpbnRhZ2V8ZW58MHx8MHx8&auto=format&fit=crop&w=1920&q=60' alt='' />
+                    <img className='product-match-body-card-img-modal' src={props?.data?.Product?.gambar[0]} alt='' />
                   </div>
                   <div className='col'>
-                    <p className='product-match-body-card-product-modal'>Mobil Antik</p>
+                    <p className='product-match-body-card-product-modal'>{props?.data?.Product?.nama_produk}</p>
                     <p className='product-match-body-card-product-modal'>
-                      <s>Rp. 250.000</s>
+                      <s>Rp {props?.data?.Product?.harga_produk.toLocaleString('id-ID')}</s>
                     </p>
-                    <p className='product-match-body-card-product-modal'>Ditawar Rp. 200.000</p>
+                    <p className='product-match-body-card-product-modal'>Ditawar Rp. {props?.data?.harga_tawar.toLocaleString('id-ID')}</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className='modal-footer row product-match-footer mt-3'>
               <button className='product-match-footer-button' data-bs-dismiss='modal'>
-                Hubungi Via Whatsapp
-                <img className='ms-2 mb-1' src="/svg/fi_whatsapp.svg" alt="" />
+                <a style={{textDecoration: 'none', color: '#ffffff'}} target='_blank' href={`https://api.whatsapp.com/send/?phone=62${props?.data?.User?.no_hp.substring(1)}&text&type=phone_number&app_absent=0`}>Hubungi Via Whatsapp</a>
+                <img className='ms-2 mb-1' src='/svg/fi_whatsapp.svg' alt='' />
               </button>
             </div>
           </div>
@@ -49,4 +49,3 @@ export default function ProductMatchModal(props) {
     </>
   );
 }
-
