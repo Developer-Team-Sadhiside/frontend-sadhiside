@@ -29,14 +29,16 @@ export function Card(props) {
         <Link to={props.link} style={{ textDecoration: 'none' }} className='col-9'>
           <p className='price-product'>Rp. {props.price.toLocaleString('id-ID')}</p>
         </Link>
-        <img
-          onClick={() => {
-            productContext.productLikeHandler(props.productId);
-          }}
-          className='col product-like-button'
-          src={props.isLike ? '/svg/fi_like.svg' : '/svg/fi_unlike.svg'}
-          alt='Like icon'
-        />
+        <span className='col'>
+          <img
+            onClick={() => {
+              productContext.productLikeHandler(props.productId);
+            }}
+            className='product-like-button'
+            src={props.isLike ? '/svg/fi_like.svg' : '/svg/fi_unlike.svg'}
+            alt='Like icon'
+          />
+        </span>
       </div>
     </div>
   );

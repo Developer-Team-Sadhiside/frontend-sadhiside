@@ -23,7 +23,7 @@ function Search() {
           className='form-control me-2 mr-4'
           placeholder='Cari disini'
           onChange={(e) => {
-            productContext.filterProductBySearch(e.target.value);
+            productContext?.filterProductBySearch(e.target.value);
           }}
         ></input>
         <img src='/svg/fi_search.svg' />
