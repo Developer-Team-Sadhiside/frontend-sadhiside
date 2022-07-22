@@ -15,7 +15,6 @@ import BidderPage from "./pages/BidderPage";
 import DashboardSellerPage from "./pages/DashboardSellerPage";
 import UpdateProductPage from "./pages/UpdateProductPage";
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -25,12 +24,13 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
 
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/register/seller" element={<RegisterAsSellerPage />} />
+        <Route path="/addprofil" element={<RegisterAsSellerPage />} />
         <Route path="/products/seller/update/:id" element={<UpdateProductPage />} />
-        <Route path="/products/create" element={<CreateProductPage />} />
-        <Route path="/products/create/preview" element={<ProductPreviewPage />} />
+        <Route path="/dashboard/seller/createproduct" element={<CreateProductPage />} />
+        <Route path="/products/seller/preview/:id" element={<ProductPreviewPage />} />
         <Route path="/products/preview/:id" element={<ProductPreviewPage />} />
         <Route path="/products/seller/bidder/:idBidder" element={<BidderPage />} />
+        <Route path="/dashboard/seller/updateprofile" element={<RegisterAsSellerPage />} />
 
         <Route path="/dashboard/seller" element={<DashboardSellerPage />} />
       </Routes>
