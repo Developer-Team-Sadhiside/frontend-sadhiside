@@ -1,5 +1,10 @@
 import Register from '../components/Register';
+import { RegisterProvider } from '../services/registerService';
 
 export default function RegisterPage() {
-  return <Register />;
+  return (
+  <RegisterProvider>
+    <Register />
+  </RegisterProvider>
+  );
 }

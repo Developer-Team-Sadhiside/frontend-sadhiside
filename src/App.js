@@ -29,7 +29,7 @@ function App() {
         <Route path="/dashboard/seller/createproduct" element={<CreateProductPage />} />
         <Route path="/products/seller/preview/:id" element={<ProductPreviewPage />} />
         <Route path="/products/preview/:id" element={<ProductPreviewPage />} />
-        <Route path="/products/seller/bidder" element={<BidderPage />} />
+        <Route path="/products/seller/bidder/:idBidder" element={<BidderPage />} />
         <Route path="/dashboard/seller/updateprofile" element={<RegisterAsSellerPage />} />
 
         <Route path="/dashboard/seller" element={<DashboardSellerPage />} />

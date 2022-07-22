@@ -1,11 +1,14 @@
-import ProductPreview from "../components/seller/ProductPreview";
-import Navbar from "../components/Navbar";
+import ProductPreview from '../components/ProductPreview';
+import Navbar from '../components/Navbar';
+import { ProductProvider } from '../services/productService';
 
 export default function ProductPreviewPage() {
   return (
     <>
-      <Navbar />
-      <ProductPreview />;
+      <ProductProvider>
+        <Navbar />
+        <ProductPreview />
+      </ProductProvider>
     </>
   );
 }
