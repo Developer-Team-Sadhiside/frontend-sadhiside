@@ -88,19 +88,6 @@ export default function UpdateProduct() {
     setPreview(response.data.produk.url);
   });
 
-  // useEffect(() => {
-  //   getProductById()
-  //   if (gambar) {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(gambar);
-  //     reader.onload = function (e) {
-  //       setPreview(reader.result);
-  //     };
-  //   } else {
-  //     setPreview(null);
-  //   }
-  // }, [gambar]);
-
   return (
     <div className="create-product-container container mt-3">
       <div className="row justify-content-sm-center g-0">
@@ -141,9 +128,6 @@ export default function UpdateProduct() {
               <div className="row mt-4" type="submit">
                 <button
                   className="col preview"
-                  // onClick={() => {
-                  //   navigate(`/products/seller/preview/${id}`);
-                  // }}
                   onClick={handlePreview}
                   type="submit"
                 >

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import '../assets/styles/Navbar.css';
 import { useProductContext } from '../services/productService';
+import {Dropdown} from 'react-bootstrap'
+
 
 function Logo() {
   return (
@@ -52,9 +54,37 @@ function List() {
 }
 
 function User() {
+  const [isLoading, setIsLoading] = useState(false);
+  const token = localStorage.getItem('token')
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    setIsLoading(true)
+  }
+
+  if(!token) {
+    return <Navigate to="/login" />
+  }
+
   return (
     <div className='fi-user navbar-user-profile-icon'>
-      <img src='/svg/fi_user.svg' />
+      <Dropdown className=''>
+        <Dropdown.Toggle 
+        className="btn-toggle"
+        style={{
+          backgroundColor: 'transparent',
+          color: 'black',
+          border: 'none',
+          zIndex: '1',
+        }}>
+          <img className='img-user' src='/svg/fi_user.svg' />
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item href="/dashboard/seller">Daftar Jual Saya</Dropdown.Item>
+          <Dropdown.Item value={isLoading} onClick={handleLogout}>Logout</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     </div>
   );
 }

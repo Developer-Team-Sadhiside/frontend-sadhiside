@@ -39,6 +39,11 @@
   margin-right: 3px;
 }
 
+.img-user{
+  margin-top: -10px;
+  
+}
+
 .home-search {
   position: absolute;
   width: 444px;
@@ -83,7 +88,7 @@
   width: 48px;
   height: 48px;
   border-radius: 10px;
-  margin-right: 100px;
+  margin-right: 110px;
 }
 .badge-notifikasi {
   position: relative;
@@ -205,6 +210,7 @@
 
 .navbar-user-profile-icon {
   cursor: pointer;
+  
 }
 
 .navbar-notification-product-name {
