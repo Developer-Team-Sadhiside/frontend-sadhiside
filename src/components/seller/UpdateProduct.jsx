@@ -43,7 +43,7 @@ export default function UpdateProduct() {
           Authorization: "Bearer " + token,
         },
       });
-      console.log("berhsail ngambil");
+      console.log("berhasil ngambil");
       navigate("/dashboard/seller");
     } catch (error) {
       console.log(error);
