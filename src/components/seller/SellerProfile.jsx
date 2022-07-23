@@ -1,18 +1,15 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../assets/styles/SellerProfile.css";
 import { useState } from "react";
 import axios from "axios";
 
 const SellerProfile = () => {
   const token = localStorage.getItem("token");
-
   const [nama, setNama] = useState("");
   const [foto, setFoto] = useState("");
-
   const navigate = useNavigate();
   const [kota, setKota] = useState("");
-
   useState(async () => {
     const response = await axios.get("http://localhost:8000/api/v1/users/whoAmI", {
       headers: {
@@ -38,17 +35,15 @@ const SellerProfile = () => {
                   <div className="text_penjual fw-bold mt-3">{nama}</div>
                   <div className="text_penjual">{kota}</div>
                   <div className="profile_btn">
-                    <Link to="/dashboard/seller/updateprofile">
                       <button
                         type="submit"
                         className="btn_edit"
                         onClick={() => {
-                          navigate("/dashboard/seller/updateprofile");
+                          navigate("/dashboard/seller/editprofile");
                         }}
                       >
                         Edit
                       </button>
-                    </Link>
                   </div>
                 </div>
               </div>
