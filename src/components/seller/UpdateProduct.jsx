@@ -91,7 +91,12 @@ export default function UpdateProduct() {
   return (
     <div className="create-product-container container mt-3">
       <div className="row justify-content-sm-center g-0">
-        <div className="col-sm-1">
+        <div
+          className="col-sm-1"
+          onClick={() => {
+            navigate("/dashboard/seller");
+          }}
+        >
           <img src="/svg/fi_arrow-left.svg" alt="" className="back" />
         </div>
         <div className="col-sm-6">
@@ -126,11 +131,7 @@ export default function UpdateProduct() {
               <input type="file" className="form-control" style={{ display: "none" }} ref={fileInputRef} accept="image/*" onChange={handleFile} />
 
               <div className="row mt-4" type="submit">
-                <button
-                  className="col preview"
-                  onClick={handlePreview}
-                  type="submit"
-                >
+                <button className="col preview" onClick={handlePreview} type="submit">
                   Preview
                 </button>
                 <button className="col terbitkan" type="submit">

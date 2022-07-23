@@ -1,19 +1,18 @@
 .profile_seller {
   display: grid;
   grid-template-columns: min-content 1fr;
-  width: 968px;
+  width: 1070px;
   height: 80px;
   position: absolute;
-  margin-left: 80px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   border-radius: 16px;
 }
 
-.text_penjual{
+.text_penjual {
   margin-left: 15px;
 }
-.daftar_jual{
+.daftar_jual {
   margin-left: 85px;
   margin-bottom: 30px;
 }
@@ -21,8 +20,8 @@
 .btn_edit {
   width: 47px;
   height: 26px;
-  border: 1px solid #7126B5;
-  background: #FFFFFF;
+  border: 1px solid #7126b5;
+  background: #ffffff;
   border-radius: 8px;
   font-size: 12px;
   line-height: 18px;
@@ -31,16 +30,15 @@
 }
 
 .profile_btn {
- display: flex;
- margin-left: 830px;
- margin-top: -60px;
- cursor: pointer;
- width: 47px;
- height: 26px;
- 
+  display: flex;
+  margin-left: 930px;
+  margin-top: -60px;
+  cursor: pointer;
+  width: 47px;
+  height: 26px;
 }
 
-.profile_image{
+.profile_image {
   margin-top: 15px;
   margin-left: 15px;
 }

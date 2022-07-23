@@ -16,7 +16,8 @@
 .category-card-product-seller {
   width: 206.67px;
   display: flex;
-  margin-left: 30px;
+  margin-left: 23px;
+  margin-bottom: 10px;
   height: 210px;
   border-radius: 4px;
   object-fit: cover;
@@ -44,13 +45,15 @@
   object-fit: cover;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .category-card-list-product {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-start;
-  width: 668px;
+  width: 750px;
   height: 198px;
 }
 
@@ -77,6 +80,11 @@
 }
 .category-img-wrapper {
   margin-left: 15px;
+  margin-top: 3px;
+}
+
+.image-like {
+  margin-left: 200px;
   margin-top: 3px;
 }
 .category-price-product-seller {
@@ -158,6 +166,7 @@
   display: flex;
   padding-left: -20px;
   overflow-x: auto !important;
+  margin-left: 25px;
 }
 
 .category-category-product-list::-webkit-scrollbar {
