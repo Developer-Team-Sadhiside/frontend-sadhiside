@@ -15,6 +15,7 @@ import BidderPage from "./pages/BidderPage";
 import DashboardSellerPage from "./pages/DashboardSellerPage";
 import UpdateProductPage from "./pages/UpdateProductPage";
 import EditProfileSellerPage from "./pages/EditProfileSellerPage";
+import SaveListPage from "./pages/SaveListPage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/products/seller/preview/:id" element={<ProductPreviewPage />} />
         <Route path="/products/preview/:id" element={<ProductPreviewPage />} />
         <Route path="/products/seller/bidder/:idBidder" element={<BidderPage />} />
+        <Route path="/products/savelist" element={<SaveListPage />} />
         <Route path="/dashboard/seller/updateprofile" element={<RegisterAsSellerPage />} />
         <Route path="/dashboard/seller/editprofile" element={<EditProfileSellerPage />} />
 

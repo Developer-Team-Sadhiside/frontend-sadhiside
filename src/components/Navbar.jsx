@@ -82,6 +82,7 @@ function User() {
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item href='/dashboard/seller'>Daftar Jual Saya</Dropdown.Item>
+          <Dropdown.Item href='/products/savelist'>Daftar Simpan</Dropdown.Item>
           <Dropdown.Item value={isLoading} onClick={handleLogout}>
             Logout
           </Dropdown.Item>
