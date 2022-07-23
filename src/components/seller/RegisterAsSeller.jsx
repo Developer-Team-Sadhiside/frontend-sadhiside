@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/RegisterAsSeller.css";
+import capitalCity from '../../assets/dumps/cities.json';
 
 const Profile = () => {
   const [foto, setFoto] = useState();
@@ -55,85 +56,72 @@ const Profile = () => {
       <div className="col-sm">
         <img src="/svg/fi_arrow-left.svg" alt="" className="back" style={{ marginTop: "30px", marginLeft: "-50px" }} />
       </div>
-      <div
-        className="picture"
-        onClick={() => {
-          fileInputRef.current.click();
+      <div className="picture" onClick={()=> {
+        fileInputRef.current.click();
         }}
-      >
-        {preview ? <img src={preview} alt="" className="image-uploaded" /> : <img src="/svg/fi-blank-profile.svg" alt="" className="plus-svg" />}
+        >
+        {preview ? <img src={preview} alt="" className="image-uploaded" /> : <img src="/svg/fi-blank-profile.svg" alt=""
+          className="plus-svg" />}
       </div>
-      <input
-        type="file"
-        className="form-control"
-        style={{ display: "none" }}
-        ref={fileInputRef}
-        accept="image/*"
-        onChange={(event) => {
-          const file = event.target.files[0];
-          if (file) {
-            setFoto(file);
-          } else {
-            setFoto(null);
-          }
-        }}
+      <input type="file" className="form-control" style={{ display: "none" }} ref={fileInputRef} accept="image/*"
+        onChange={(event)=> {
+      const file = event.target.files[0];
+      if (file) {
+      setFoto(file);
+      } else {
+      setFoto(null);
+      }
+      }}
       />
       <form>
         <div className="profile-form mt-4">
           <label className="form-label" htmlFor="nama">
             Nama*
           </label>
-          <input
-            type="text"
-            className="form-control ml-4"
-            onChange={(event) => {
-              setNama(event.target.value);
-            }}
-            placeholder="Nama"
-            id="nama-lengkap"
+          <input type="text" className="form-control ml-4" onChange={(event)=> {
+          setNama(event.target.value);
+          }}
+          placeholder="Nama"
+          id="nama-lengkap"
           />
-          <label className="form-label mt-4" htmlFor="no-hp">
+          <label className="form-label mt-3">
             Kota*
           </label>
-          <input
-            type="text"
-            className="form-control"
-            onChange={(event) => {
-              setKota(event.target.value);
+          <select className="form-select option-field" id="inputGroupSelect04"
+            aria-label="Example select with button addon" onChange={(event)=> {
+            setKota(event.target.value);
             }}
-            placeholder="contoh: demak"
-            id="kota"
-          />
-          <label
-            className="form-label mt-4"
-            onChange={(event) => {
-              setAlamat(event.target.value);
+            value={kota ? kota : 'Surabaya'}
+            >
+            <option defaultValue="Surabaya">Pilih Kota</option>
+            {capitalCity.map((city, index) => (
+            <option key={index} value={city.city}>
+              {city.city}
+            </option>
+            ))}
+          </select>
+          <label className="form-label mt-4" onChange={(event)=> {
+            setAlamat(event.target.value);
             }}
             htmlFor="alamat"
-          >
+            >
             Alamat*
           </label>
-          <input
-            type="text"
-            className="form-control"
-            onChange={(event) => {
-              setAlamat(event.target.value);
-            }}
-            style={{ height: "80px", fontSize: "14px" }}
-            placeholder="Contoh: Jalan Ikan Hiu 33"
-            id="alamat"
+          <input type="text" className="form-control" onChange={(event)=> {
+          setAlamat(event.target.value);
+          }}
+          style={{ height: "80px", fontSize: "14px" }}
+          placeholder="Contoh: Jalan Ikan Hiu 33"
+          id="alamat"
           />
           <label className="form-label mt-4" htmlFor="no-hp">
             No Handphone*
           </label>
-          <input
-            type="text"
-            className="form-control"
-            onChange={(event) => {
-              setNohp(event.target.value);
-            }}
-            placeholder="contoh: +628123456789"
-            id="no_hp"
+          <input type="text" className="form-control" onChange={(event)=> {
+          setNohp(event.target.value);
+          }}
+          placeholder="contoh: +628123456789"
+          id="no_hp"
           />
         </div>
         <div className="justify-content-center mb-5">
@@ -141,7 +129,7 @@ const Profile = () => {
         </div>
       </form>
     </div>
-  );
-};
+    );
+    };
 
 export default Profile;
