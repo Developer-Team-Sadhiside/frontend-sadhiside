@@ -26,16 +26,15 @@ const SaveList = () => {
 
   return (
     <div>
-      <div className='container me-4'>
-        <div className='row g-0'>
-          <div className='col-sm-1 offset-1'>
+      <div className='container'>
+          <div className="col-8" style={{ marginLeft:"220px" }}>
             <Link to='/'>
             <img src='/svg/fi_arrow-left.svg' alt='' className='back' />
             </Link>
-          </div>
+        <div className='row ms-5 px-5 py-1'>
           {likedProducts?.map((value) => {
             return (
-            <div className='product-simpan col-sm-2'>
+            <div className='product-simpan'>
               <div className='img-wrapper'>
                 <img className='card-img-top-simpan' src={value.gambar[0]} />
               </div>
@@ -58,6 +57,7 @@ const SaveList = () => {
             </div>
             )
           })}
+          </div>
         </div>
       </div>
     </div>

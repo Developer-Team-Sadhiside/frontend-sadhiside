@@ -84,7 +84,7 @@ export default function CreateProduct() {
                 onChange={(e) => setHarga_Produk(e.target.value)}
               />
               <label className='create-product-label'>Kategori</label>
-              <select class='form-control' value={kategori} onChange={(e) => setKategori(e.target.value)}>
+              <select class='form-select option-field' value={kategori} onChange={(e) => setKategori(e.target.value)}>
                 <option>Hobi</option>
                 <option>Kendaraan</option>
                 <option>Baju</option>
