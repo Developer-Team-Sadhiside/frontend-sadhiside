@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import '../assets/styles/Navbar.css';
 import { useProductContext } from '../services/productService';
 import { Dropdown } from 'react-bootstrap';
@@ -183,6 +183,8 @@ function NavInfoAccount() {
 
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState();
+  const params = useParams();
+
   function checkUserLogin() {
     if (!localStorage.getItem('token')) setIsLogin(false);
     else setIsLogin(true);
@@ -195,8 +197,18 @@ const Navbar = () => {
   return (
     <header id='header'>
       <nav className='navbar navbar-light pt-4' style={{ height: '' }}>
-        <Logo />
-        <Search />
+        <Link to='/'>
+          <Logo />
+        </Link>
+        {params?.idBidder ? (
+          <>
+            <NavInfoPenawar />
+          </>
+        ) : (
+          <>
+            <Search />
+          </>
+        )}
         {isLogin ? (
           <>
             <List />

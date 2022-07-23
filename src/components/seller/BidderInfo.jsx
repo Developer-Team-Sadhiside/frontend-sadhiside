@@ -61,7 +61,7 @@ const BidderInfo = () => {
               </div>
               <div className='row g-0'>
                 <div className='justify-content-end d-inline-flex py-3'>
-                  <button onClick={() => {if (productContext.rejectOfferProduct(offer?.Product?.id)) navigate('/');}} className='btn-tolak' id='preview'>
+                  <button onClick={() => {if (productContext.rejectOfferProduct(offer?.Product?.id)) navigate('/dashboard/seller');}} className='btn-tolak' id='preview'>
                     Tolak
                   </button>
                   {offer?.Product?.status === 'terjual' ? (
