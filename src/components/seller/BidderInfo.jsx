@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../assets/styles/BidderInfo.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useProductContext } from '../../services/productService';
 import ProductMatchModal from '../seller/ProductMatchModal';
 
@@ -9,6 +9,7 @@ const BidderInfo = () => {
 
   const params = useParams();
   const productContext = useProductContext();
+  const navigate = useNavigate();
 
   async function getProductOffered() {
     const data = await productContext.getDetailProductOffer(params.idBidder);
@@ -60,7 +61,7 @@ const BidderInfo = () => {
               </div>
               <div className='row g-0'>
                 <div className='justify-content-end d-inline-flex py-3'>
-                  <button className='btn-tolak' id='preview'>
+                  <button onClick={() => {if (productContext.rejectOfferProduct(offer?.Product?.id)) navigate('/');}} className='btn-tolak' id='preview'>
                     Tolak
                   </button>
                   {offer?.Product?.status === 'terjual' ? (

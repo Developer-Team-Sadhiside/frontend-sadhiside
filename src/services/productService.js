@@ -11,7 +11,7 @@ export function ProductProvider({ children }) {
   const [products, setProducts] = useState();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [toggleFilter, setToggleFilter] = useState(true);
-  const [productsOffered, setProductsOffered] = useState();
+  const [productsOffered, setProductsOffered] = useState([]);
 
   const navigate = useNavigate();
 
@@ -141,7 +141,8 @@ export function ProductProvider({ children }) {
       navigate('/login');
     } else {
       const token = localStorage.getItem('token');
-      let result = await fetch(`http://localhost:8000/api/v1/history/buyer/listProductsOffered`, {
+
+      let result = await fetch(`http://localhost:8000/api/v1/users/whoAmI`, {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
@@ -149,7 +150,18 @@ export function ProductProvider({ children }) {
         },
       });
       result = await result.json();
-      setProductsOffered(result.data);
+
+      if (result?.user?.role[1] === 'seller') {
+        let result = await fetch(`http://localhost:8000/api/v1/history/buyer/listProductsOffered`, {
+          method: 'GET',
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        result = await result.json();
+        setProductsOffered(result.data);
+      }
     }
   }
 
@@ -182,12 +194,24 @@ export function ProductProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(result);
     }
   }
 
   async function rejectOfferProduct(id) {
-
+    console.log(id);
+    if (!checkUserLogin()) {
+      navigate('/login');
+    } else {
+      const token = localStorage.getItem('token');
+      let result = await fetch(`http://localhost:8000/api/v1/history/seller/rejectOffer/${id}`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return true;
+    }
   }
 
   const productsContextValue = {
@@ -204,6 +228,7 @@ export function ProductProvider({ children }) {
     productsOffered,
     getDetailProductOffer,
     acceptOfferProduct,
+    rejectOfferProduct
   };
 
   return <ProductContext.Provider value={productsContextValue}>{children}</ProductContext.Provider>;

@@ -24,8 +24,7 @@ export default function SellButton() {
       navigate("/login");
     }
   }
-
-  console.log(kota, alamat);
+  
   return (
     <a href="" className="start-sell-link">
       <button

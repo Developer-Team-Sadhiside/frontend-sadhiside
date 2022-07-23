@@ -206,6 +206,7 @@
 
 .notif-product-image {
   margin-left: 5px;
+  object-fit: cover;
 }
 
 .navbar-user-profile-icon {
@@ -215,7 +216,6 @@
 
 .navbar-notification-product-name {
   width: 200px !important;
-  color: #7126b5 !important;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

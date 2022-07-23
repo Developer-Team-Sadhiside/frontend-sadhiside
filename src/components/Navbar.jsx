@@ -3,8 +3,7 @@ import { useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import '../assets/styles/Navbar.css';
 import { useProductContext } from '../services/productService';
-import {Dropdown} from 'react-bootstrap'
-
+import { Dropdown } from 'react-bootstrap';
 
 function Logo() {
   return (
@@ -55,34 +54,37 @@ function List() {
 
 function User() {
   const [isLoading, setIsLoading] = useState(false);
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token');
 
   const handleLogout = (e) => {
     e.preventDefault();
-    localStorage.removeItem("token");
-    setIsLoading(true)
-  }
+    localStorage.removeItem('token');
+    setIsLoading(true);
+  };
 
-  if(!token) {
-    return <Navigate to="/login" />
+  if (!token) {
+    return <Navigate to='/login' />;
   }
 
   return (
     <div className='fi-user navbar-user-profile-icon'>
       <Dropdown className=''>
-        <Dropdown.Toggle 
-        className="btn-toggle"
-        style={{
-          backgroundColor: 'transparent',
-          color: 'black',
-          border: 'none',
-          zIndex: '1',
-        }}>
+        <Dropdown.Toggle
+          className='btn-toggle'
+          style={{
+            backgroundColor: 'transparent',
+            color: 'black',
+            border: 'none',
+            zIndex: '1',
+          }}
+        >
           <img className='img-user' src='/svg/fi_user.svg' />
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item href="/dashboard/seller">Daftar Jual Saya</Dropdown.Item>
-          <Dropdown.Item value={isLoading} onClick={handleLogout}>Logout</Dropdown.Item>
+          <Dropdown.Item href='/dashboard/seller'>Daftar Jual Saya</Dropdown.Item>
+          <Dropdown.Item value={isLoading} onClick={handleLogout}>
+            Logout
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </div>
@@ -98,7 +100,12 @@ function Notif() {
 
   return (
     <div className='fi-bell'>
-      <span onClick={() => setHidden(!hidden)}>
+      <span
+        onClick={() => {
+          setHidden(!hidden);
+          productContext.getProductsOffered();
+        }}
+      >
         <img src='/svg/fi_bell.svg' />
       </span>
       <a href='#' className='badge-notif' data-badge=''></a>
@@ -140,7 +147,7 @@ function Notif() {
                             <></>
                           ) : (
                             <>
-                              <svg width='328' height='1' viewBox='0 0 328 1' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                              <svg className='mb-3' width='328' height='1' viewBox='0 0 328 1' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                 <rect width='328' height='1' fill='#E5E5E5' />
                               </svg>
                             </>
