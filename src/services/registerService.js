@@ -20,6 +20,8 @@ export function RegisterProvider({ children }) {
 
   const navigate = useNavigate();
 
+  const domain = 'https://secondhand-shadiside.herokuapp.com';
+
   const changeInputPasswordType = () => {
     if (passwordType == 'password') {
       setPasswordType('text');
@@ -60,7 +62,7 @@ export function RegisterProvider({ children }) {
     const item = { nama: name, email: email, password: password };
 
     if (validateInputRegister(item)) {
-      let result = await fetch('http://localhost:8000/api/v1/users/register', {
+      let result = await fetch(`${domain}/api/v1/users/register`, {
         method: 'POST',
         body: JSON.stringify(item),
         headers: {

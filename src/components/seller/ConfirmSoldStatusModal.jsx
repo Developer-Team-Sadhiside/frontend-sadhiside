@@ -1,9 +1,17 @@
+import { useState } from 'react';
 import '../../assets/styles/ConfirmSoldStatusModal.css';
+import { useProductContext } from '../../services/productService';
+import { useNavigate } from 'react-router-dom';
 
-export default function ConfirmSoldStatusModal() {
+export default function ConfirmSoldStatusModal(props) {
+  const productContext = useProductContext();
+  const [status, setStatus] = useState(false);
+
+  const navigate = useNavigate();
+
   return (
     <>
-      <div className='modal fade' id='confirmSoldStatusModal' tabIndex={-1} aria-labelledby='confirmSoldStatusModalLabel' aria-hidden='true'>
+      <div className='modal fade' id={props.idModal} tabIndex={-1} aria-labelledby='confirmSoldStatusModalLabel' aria-hidden='true'>
         <div className='modal-dialog modal-dialog-centered confirm-sold-status-dialog-modal'>
           <div className='modal-content confirm-sold-status-content-modal'>
             <div className='modal-header confirm-sold-status-header-modal'>
@@ -13,14 +21,30 @@ export default function ConfirmSoldStatusModal() {
               <p className='confirm-sold-status-body-message-modal'>Perbarui status penjualan produkmu</p>
               <div>
                 <div className='form-check'>
-                  <input className='regular-radio' type='radio' name='confirmSoldStatusRadios' id='soldRadio' />
+                  <input
+                    onChange={() => {
+                      setStatus(true);
+                    }}
+                    className='regular-radio'
+                    type='radio'
+                    name='confirmSoldStatusRadios'
+                    id='soldRadio'
+                  />
                   <label className='confirm-sold-radio-title' htmlFor='soldRadio'>
                     Berhasil terjual
                   </label>
                   <p className='confirm-sold-radio-verbose'>Kamu telah sepakat menjual produk ini kepada pembeli</p>
                 </div>
                 <div className='form-check'>
-                  <input className='regular-radio' type='radio' name='confirmSoldStatusRadios' id='cancelRadio' />
+                  <input
+                    onChange={() => {
+                      setStatus(false);
+                    }}
+                    className='regular-radio'
+                    type='radio'
+                    name='confirmSoldStatusRadios'
+                    id='cancelRadio'
+                  />
                   <label className='confirm-sold-radio-title' htmlFor='cancelRadio'>
                     Batalkan transaksi
                   </label>
@@ -29,9 +53,33 @@ export default function ConfirmSoldStatusModal() {
               </div>
             </div>
             <div className='modal-footer row g-0 confirm-sold-status-footer-modal'>
-              <button type='button' className='confirm-sold-status-button-modal' data-bs-dismiss="modal">
-                Kirim
-              </button>
+              {status ? (
+                <>
+                  <button
+                    onClick={() => {
+                      if (productContext.acceptOfferProduct(props.productId)) navigate('/dashboard/seller');
+                    }}
+                    type='button'
+                    className='confirm-sold-status-button-modal'
+                    data-bs-dismiss='modal'
+                  >
+                    Kirim
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      if (productContext.rejectOfferProduct(props.productId)) navigate('/dashboard/seller');
+                    }}
+                    type='button'
+                    className='confirm-sold-status-button-modal'
+                    data-bs-dismiss='modal'
+                  >
+                    Kirim
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>

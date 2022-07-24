@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import '../../assets/styles/BidderInfo.css';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useProductContext } from '../../services/productService';
-import ProductMatchModal from '../seller/ProductMatchModal';
+import ProductMatchModal from './ProductMatchModal';
+import ConfirmSoldStatusModal from './ConfirmSoldStatusModal';
 
 const BidderInfo = () => {
   const [offer, setOffer] = useState();
@@ -61,9 +62,26 @@ const BidderInfo = () => {
               </div>
               <div className='row g-0'>
                 <div className='justify-content-end d-inline-flex py-3'>
-                  <button onClick={() => {if (productContext.rejectOfferProduct(offer?.Product?.id)) navigate('/dashboard/seller');}} className='btn-tolak' id='preview'>
-                    Tolak
-                  </button>
+                  {offer?.Product?.status === 'terjual' ? (
+                    <>
+                      <button onClick={() => {}} className='btn-tolak' id='preview' data-bs-toggle='modal' data-bs-target={`#statusProduct${offer?.id}`}>
+                        Status
+                      </button>
+                      <ConfirmSoldStatusModal idModal={`statusProduct${offer?.id}`} productId={offer?.Product?.id}/>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => {
+                          if (productContext.rejectOfferProduct(offer?.Product?.id)) navigate('/dashboard/seller');
+                        }}
+                        className='btn-tolak'
+                        id='preview'
+                      >
+                        Tolak
+                      </button>
+                    </>
+                  )}
                   {offer?.Product?.status === 'terjual' ? (
                     <>
                       <button className='btn-simpan ms-3' id='preview'>
@@ -81,7 +99,7 @@ const BidderInfo = () => {
                       <button
                         onClick={() => {
                           productContext.acceptOfferProduct(offer?.Product?.id);
-                          productContext.getDetailProductOffer(params.idBidder)
+                          productContext.getDetailProductOffer(params.idBidder);
                         }}
                         className='btn-simpan ms-3'
                         id='preview'
@@ -92,7 +110,7 @@ const BidderInfo = () => {
                       </button>
                     </>
                   )}
-                  <ProductMatchModal idModal={`acceptOffer${offer?.id}`} data={offer} />
+                  <ProductMatchModal idBidder={params.idBidder} idModal={`acceptOffer${offer?.id}`} data={offer} />
                 </div>
               </div>
             </div>

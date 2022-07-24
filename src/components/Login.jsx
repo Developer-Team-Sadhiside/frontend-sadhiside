@@ -22,6 +22,8 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const domain = 'https://secondhand-shadiside.herokuapp.com'
+
   const submitLogin = async (event) => {
     event.preventDefault();
     const data = {
@@ -30,7 +32,7 @@ const Login = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:8000/api/v1/users/login", data);
+      const response = await axios.post(`${domain}/api/v1/users/login`, data);
       localStorage.setItem("token", response.data.token);
       navigate("/");
     } catch (error) {

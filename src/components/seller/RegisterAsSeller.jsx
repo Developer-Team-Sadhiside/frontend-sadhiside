@@ -24,10 +24,11 @@ const Profile = () => {
     formData.append("no_hp", no_hp);
 
     const token = localStorage.getItem("token");
-    console.log(token);
+
+    const domain = 'https://secondhand-shadiside.herokuapp.com'
 
     try {
-      await axios.put("http://localhost:8000/api/v1/users/addProfil", formData, {
+      await axios.put(`${domain}/api/v1/users/addProfil`, formData, {
         headers: {
           "Content-type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

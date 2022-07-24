@@ -8,8 +8,10 @@ const SaveList = () => {
   const token = localStorage.getItem("token");
   const [likedProducts, setLikedProducts] =  useState()
 
+  const domain = 'https://secondhand-shadiside.herokuapp.com'
+
   async function getLikedProducts (){
-    let result = await fetch("http://localhost:8000/api/v1/listProducts/buyer/liked", {
+    let result = await fetch(`${domain}/api/v1/listProducts/buyer/liked`, {
       method : "GET",
       headers: {
         Authorization: "Bearer " + token,

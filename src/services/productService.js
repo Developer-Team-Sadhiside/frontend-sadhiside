@@ -14,6 +14,7 @@ export function ProductProvider({ children }) {
   const [productsOffered, setProductsOffered] = useState([]);
 
   const navigate = useNavigate();
+  const domain = 'https://secondhand-shadiside.herokuapp.com';
 
   useEffect(() => {
     getProducts();
@@ -27,7 +28,7 @@ export function ProductProvider({ children }) {
   async function getProducts() {
     if (checkUserLogin()) {
       const token = localStorage.getItem('token');
-      let result = await fetch('http://localhost:8000/api/v1/listAllProducts/like', {
+      let result = await fetch(`${domain}/api/v1/listAllProducts/like`, {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
@@ -38,7 +39,7 @@ export function ProductProvider({ children }) {
       setProducts(result.produk);
       return;
     }
-    let result = await fetch('http://localhost:8000/api/v1/listAllProducts/Unregister', {
+    let result = await fetch(`${domain}/api/v1/listAllProducts/Unregister`, {
       method: 'GET',
     });
     let data = [];
@@ -88,7 +89,7 @@ export function ProductProvider({ children }) {
       navigate('/login');
     } else {
       const token = localStorage.getItem('token');
-      let result = await fetch(`http://localhost:8000/api/v1/likes/${id}`, {
+      let result = await fetch(`${domain}/api/v1/likes/${id}`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -105,7 +106,8 @@ export function ProductProvider({ children }) {
       navigate('/login');
     } else {
       const token = localStorage.getItem('token');
-      let product = await fetch(`http://localhost:8000/api/v1/getOneProduct/${id}`, {
+      let product = await fetch(`${domain}/api/v1/getOneProduct/${id}`, {
+      //let product = await fetch(`http://localhost:8000/api/v1/getOneProductWhenOffer/${id}`, {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
@@ -123,7 +125,7 @@ export function ProductProvider({ children }) {
     } else {
       const item = { harga_tawar: offerPrice };
       const token = localStorage.getItem('token');
-      let result = await fetch(`http://localhost:8000/api/v1/buy/product/${id}`, {
+      let result = await fetch(`${domain}/api/v1/buy/product/${id}`, {
         method: 'POST',
         body: JSON.stringify(item),
         headers: {
@@ -142,7 +144,7 @@ export function ProductProvider({ children }) {
     } else {
       const token = localStorage.getItem('token');
 
-      let result = await fetch(`http://localhost:8000/api/v1/users/whoAmI`, {
+      let result = await fetch(`${domain}/api/v1/users/whoAmI`, {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
@@ -152,7 +154,7 @@ export function ProductProvider({ children }) {
       result = await result.json();
 
       if (result?.user?.role[1] === 'seller') {
-        let result = await fetch(`http://localhost:8000/api/v1/history/buyer/listProductsOffered`, {
+        let result = await fetch(`${domain}/api/v1/history/buyer/listProductsOffered`, {
           method: 'GET',
           headers: {
             'Content-type': 'application/json',
@@ -170,7 +172,7 @@ export function ProductProvider({ children }) {
       navigate('/login');
     } else {
       const token = localStorage.getItem('token');
-      let result = await fetch(`http://localhost:8000/api/v1/history/seller/detailOffer/${id}`, {
+      let result = await fetch(`${domain}/api/v1/history/seller/detailOffer/${id}`, {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
@@ -187,13 +189,14 @@ export function ProductProvider({ children }) {
       navigate('/login');
     } else {
       const token = localStorage.getItem('token');
-      let result = await fetch(`http://localhost:8000/api/v1/history/seller/acceptOffer/${id}`, {
+      let result = await fetch(`${domain}/api/v1/history/seller/acceptOffer/${id}`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       });
+      return true;
     }
   }
 
@@ -203,7 +206,7 @@ export function ProductProvider({ children }) {
       navigate('/login');
     } else {
       const token = localStorage.getItem('token');
-      let result = await fetch(`http://localhost:8000/api/v1/history/seller/rejectOffer/${id}`, {
+      let result = await fetch(`${domain}/api/v1/history/seller/rejectOffer/${id}`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

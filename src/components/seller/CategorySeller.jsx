@@ -56,8 +56,10 @@ const CategorySeller = () => {
     getProductsSellerSold();
   }, []);
 
+  const domain = 'https://secondhand-shadiside.herokuapp.com'
+
   const getProductsSeller = async () => {
-    const response = await axios.get("http://localhost:8000/api/v1/listProducts/seller", {
+    const response = await axios.get(`${domain}/api/v1/listProducts/seller`, {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -67,7 +69,7 @@ const CategorySeller = () => {
   };
 
   const getProductsSellerInterest = async () => {
-    const response = await axios.get("http://localhost:8000/api/v1/listProducts/seller/interested", {
+    const response = await axios.get(`${domain}/api/v1/listProducts/seller/interested`, {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -77,7 +79,7 @@ const CategorySeller = () => {
   };
 
   const getProductsSellerSold = async () => {
-    const response = await axios.get("http://localhost:8000/api/v1/listProducts/seller/sold", {
+    const response = await axios.get(`${domain}/api/v1/listProducts/seller/sold`, {
       headers: {
         Authorization: "Bearer " + token,
       },

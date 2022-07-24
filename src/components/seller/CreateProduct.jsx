@@ -28,8 +28,11 @@ export default function CreateProduct() {
     formData.append("harga_produk", harga_produk);
     formData.append("kategori", kategori);
     formData.append("deskripsi", deskripsi);
+
+    const domain = 'https://secondhand-shadiside.herokuapp.com'
+
     try {
-      await axios.post("http://localhost:8000/api/v1/addProduct", formData, {
+      await axios.post(`${domain}/api/v1/addProduct`, formData, {
         headers: {
           "Content-type": "multipart/form-data",
           Authorization: "Bearer " + token,

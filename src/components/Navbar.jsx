@@ -44,10 +44,10 @@ function Login() {
   );
 }
 
-function List() {
+function List({ iconActive }) {
   return (
     <div className='fi-list'>
-      <img src='/svg/fi_list.svg' />
+      <img src={iconActive ? '/svg/fi_list-active.svg' : '/svg/fi_list-inactive.svg'} />
     </div>
   );
 }
@@ -78,7 +78,7 @@ function User() {
             zIndex: '1',
           }}
         >
-          <img className='img-user' src='/svg/fi_user.svg' />
+          <img className='img-user' src='/svg/fi_user-inactive.svg' />
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item href='/dashboard/seller'>Daftar Jual Saya</Dropdown.Item>
@@ -107,7 +107,7 @@ function Notif() {
           productContext.getProductsOffered();
         }}
       >
-        <img src='/svg/fi_bell.svg' />
+        <img src='/svg/fi_bell-inactive.svg' />
       </span>
       <a href='#' className='badge-notif' data-badge=''></a>
       {hidden && (
@@ -184,11 +184,17 @@ function NavInfoAccount() {
 
 const Navbar = () => {
   const [isLogin, setIsLogin] = useState();
+  const [iconActive, setIconActive] = useState({ list: false, notif: false, user: false });
+
   const params = useParams();
 
   function checkUserLogin() {
     if (!localStorage.getItem('token')) setIsLogin(false);
     else setIsLogin(true);
+  }
+
+  function toggleIconActive(iconId) {
+    setIconActive({ ...iconActive });
   }
 
   useEffect(() => {
@@ -212,9 +218,27 @@ const Navbar = () => {
         )}
         {isLogin ? (
           <>
-            <List />
-            <Notif />
-            <User />
+            <div
+              onClick={() => {
+                toggleIconActive('list');
+              }}
+            >
+              <List iconActive={iconActive[0]} />
+            </div>
+            <div
+              onClick={() => {
+                toggleIconActive('notif');
+              }}
+            >
+              <Notif iconActive={iconActive[1]} />
+            </div>
+            <div
+              onClick={() => {
+                toggleIconActive('user');
+              }}
+            >
+              <User iconActive={iconActive[2]} />
+            </div>
           </>
         ) : (
           <>

@@ -10,8 +10,11 @@ const SellerProfile = () => {
   const [foto, setFoto] = useState("");
   const navigate = useNavigate();
   const [kota, setKota] = useState("");
+
+  const domain = `https://secondhand-shadiside.herokuapp.com`
+
   useState(async () => {
-    const response = await axios.get("http://localhost:8000/api/v1/users/whoAmI", {
+    const response = await axios.get(`${domain}/api/v1/users/whoAmI`, {
       headers: {
         Authorization: "Bearer " + token,
       },

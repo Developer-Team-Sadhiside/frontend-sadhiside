@@ -11,8 +11,10 @@ export function ProductCarouselPreview(props) {
   const [gambar, setGambar] = useState("");
   const { id } = useParams();
 
+  const domain = 'https://secondhand-shadiside.herokuapp.com'
+
   useState(async () => {
-    const response = await axios.get(`http://localhost:8000/api/v1/getOneProduct/${id}`, {
+    const response = await axios.get(`${domain}/api/v1/getOneProduct/${id}`, {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -49,7 +51,7 @@ export function ProductDescriptionPreview(props) {
   const { id } = useParams();
 
   useState(async () => {
-    const response = await axios.get(`http://localhost:8000/api/v1/getOneProduct/${id}`, {
+    const response = await axios.get(`${domain}/api/v1/getOneProduct/${id}`, {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -70,7 +72,7 @@ export function EditButtonPreview() {
   const navigate = useNavigate();
 
   useState(async () => {
-    const response = await axios.get(`http://localhost:8000/api/v1/getOneProduct/${id}`, {
+    const response = await axios.get(`${domain}/api/v1/getOneProduct/${id}`, {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -96,7 +98,7 @@ export function EditButton() {
   const navigate = useNavigate();
 
   useState(async () => {
-    const response = await axios.get(`http://localhost:8000/api/v1/getOneProduct/${id}`, {
+    const response = await axios.get(`${domain}/api/v1/getOneProduct/${id}`, {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -141,7 +143,7 @@ export function ProductCardPreview(props) {
   const { id } = useParams();
 
   useState(async () => {
-    const response = await axios.get(`http://localhost:8000/api/v1/getOneProduct/${id}`, {
+    const response = await axios.get(`${domain}/api/v1/getOneProduct/${id}`, {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -182,7 +184,7 @@ export function UserCardPreview(props) {
   const { id } = useParams();
 
   useState(async () => {
-    const response = await axios.get(`http://localhost:8000/api/v1/getOneProduct/${id}`, {
+    const response = await axios.get(`${domain}/api/v1/getOneProduct/${id}`, {
       headers: {
         Authorization: "Bearer " + token,
       },

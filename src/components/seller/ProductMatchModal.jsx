@@ -1,6 +1,8 @@
 import '../../assets/styles/ProductMatchModal.css';
+import { useProductContext } from '../../services/productService';
 
 export default function ProductMatchModal(props) {
+  const productContext = useProductContext();
   return (
     <>
       <div className='modal fade' id={props.idModal} tabIndex={-1} aria-labelledby='productMatchModalLabel' aria-hidden='true'>
@@ -39,7 +41,17 @@ export default function ProductMatchModal(props) {
             </div>
             <div className='modal-footer row product-match-footer mt-3'>
               <button className='product-match-footer-button' data-bs-dismiss='modal'>
-                <a style={{textDecoration: 'none', color: '#ffffff'}} target='_blank' href={`https://api.whatsapp.com/send/?phone=62${props?.data?.User?.no_hp.substring(1)}&text&type=phone_number&app_absent=0`}>Hubungi Via Whatsapp</a>
+                <a
+                  onClick={() => {
+                    productContext.getDetailProductOffer(props.idBidder);
+                    window.location.reload();
+                  }}
+                  style={{ textDecoration: 'none', color: '#ffffff' }}
+                  target='_blank'
+                  href={`https://api.whatsapp.com/send/?phone=62${props?.data?.User?.no_hp.substring(1)}&text&type=phone_number&app_absent=0`}
+                >
+                  Hubungi Via Whatsapp
+                </a>
                 <img className='ms-2 mb-1' src='/svg/fi_whatsapp.svg' alt='' />
               </button>
             </div>

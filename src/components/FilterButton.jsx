@@ -24,22 +24,24 @@ const FilterButton = (props) => {
 
   return (
     <div className='container mt-5'>
-      <p className='find-category-text'>Telusuri Kategori</p>
-      {filterActive.objects.map((elements, index) => {
-        return (
-          <button
-            key={index}
-            className={toggleActiveStyle(index)}
-            onClick={() => {
-              toggleActiveFilter(index);
-              productContext.filterProduct(elements.value);
-            }}
-          >
-            <i className='bi bi-search filter-icon'></i>
-            {elements.value}
-          </button>
-        );
-      })}
+      <div className='filter-container'>
+        <p className='find-category-text'>Telusuri Kategori</p>
+        {filterActive.objects.map((elements, index) => {
+          return (
+            <button
+              key={index}
+              className={toggleActiveStyle(index)}
+              onClick={() => {
+                toggleActiveFilter(index);
+                productContext.filterProduct(elements.value);
+              }}
+            >
+              <i className='bi bi-search filter-icon'></i>
+              {elements.value}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };
