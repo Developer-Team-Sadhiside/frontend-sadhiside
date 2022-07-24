@@ -1,19 +1,27 @@
-import "../../assets/styles/UpdateProduct.css";
-import { useRef, useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
+import '../../assets/styles/UpdateProduct.css';
+import { useRef, useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import ProductPreview from './ProductPreview';
+import axios from 'axios';
+import { useProductContext } from '../../services/productService';
 
 export default function UpdateProduct() {
-  const token = localStorage.getItem("token");
-  const [deskripsi, setDeskripsi] = useState();
-  const [nama_produk, setNama_Produk] = useState("");
-  const [harga_produk, setHarga_Produk] = useState("");
-  const [kategori, setKategori] = useState("");
-  const [gambar, setGambar] = useState("");
+  const [editMode, setEditMode] = useState(false);
+  const [product, setProduct] = useState();
+  const [loading, setLoading] = useState(false);
   const [preview, setPreview] = useState();
+  const [gambar, setGambar] = useState('');
+
+  const productContext = useProductContext();
+
+  const params = useParams();
   const navigate = useNavigate();
   const fileInputRef = useRef();
-  const { id } = useParams();
+
+  async function getProduct() {
+    const result = await productContext.getProductById(params.id);
+    setProduct(result.product.produk);
+  }
 
   const loadImage = (e) => {
     const image = e.target.files[0];
@@ -21,128 +29,167 @@ export default function UpdateProduct() {
     setPreview(URL.createObjectURL(image));
   };
 
-  const handleFile = (e) => {
-    e.preventDefault();
-    setGambar(e.target.files[0]);
-    setPreview(URL.createObjectURL(e.target.files[0]));
-  };
+  function updateProduct(data, changes) {
+    if (changes === 'nama_produk') setProduct({ ...product, nama_produk: data });
+    else if (changes === 'harga_produk') setProduct({ ...product, harga_produk: data });
+    else if (changes === 'deskripsi') setProduct({ ...product, deskripsi: data });
+  }
 
-  const updateProducts = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("gambar", gambar);
-    formData.append("nama_produk", nama_produk);
-    formData.append("harga_produk", harga_produk);
-    formData.append("kategori", kategori);
-    formData.append("deskripsi", deskripsi);
-
-    try {
-      await axios.put(`https://secondhand-shadiside.herokuapp.com/api/v1/product/${id}`, formData, {
-        headers: {
-          "Content-type": "multipart/form-data",
-          Authorization: "Bearer " + token,
-        },
-      });
-      console.log("berhasil ngambil");
-      navigate("/dashboard/seller");
-    } catch (error) {
-      console.log(error);
+  useEffect(() => {
+    if (gambar) {
+      const reader = new FileReader();
+      reader.readAsDataURL(gambar);
+      reader.onload = function (e) {
+        setPreview(reader.result);
+      };
+    } else {
+      setPreview(null);
     }
-  };
+    getProduct();
+  }, [gambar]);
 
-  const handlePreview = async (e) => {
-    e.preventDefault();
+  async function updateProductSave(id, product) {
     const formData = new FormData();
-    formData.append("gambar", gambar);
-    formData.append("nama_produk", nama_produk);
-    formData.append("harga_produk", harga_produk);
-    formData.append("kategori", kategori);
-    formData.append("deskripsi", deskripsi);
+    formData.append('gambar', gambar);
+    formData.append('nama_produk', product.nama_produk);
+    formData.append('harga_produk', product.harga_produk);
+    formData.append('kategori', product.kategori);
+    formData.append('deskripsi', product.deskripsi);
 
-    try {
-      await axios.put(`https://secondhand-shadiside.herokuapp.com/api/v1/product/${id}`, formData, {
-        headers: {
-          "Content-type": "multipart/form-data",
-          Authorization: "Bearer " + token,
-        },
-      });
-      console.log("berhsail ngambil");
-      navigate(`/products/seller/preview/${id}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useState(async () => {
-    const response = await axios.get(`https://secondhand-shadiside.herokuapp.com/api/v1/getOneProduct/${id}`, {
+    const token = localStorage.getItem('token');
+    await axios.put(`https://secondhand-shadiside.herokuapp.com/api/v1/product/${id}`, formData, {
       headers: {
-        Authorization: "Bearer " + token,
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     });
-
-    setGambar(response.data.produk.gambar);
-    setNama_Produk(response.data.produk.nama_produk);
-    setHarga_Produk(response.data.produk.harga_produk);
-    setDeskripsi(response.data.produk.deskripsi);
-    setKategori(response.data.produk.kategori);
-    setPreview(response.data.produk.url);
-  });
+    navigate('/dashboard/seller');
+    return true;
+  }
 
   return (
-    <div className="create-product-container container mt-3">
-      <div className="row justify-content-sm-center g-0">
-        <div
-          className="col-sm-1"
-          onClick={() => {
-            navigate("/dashboard/seller");
-          }}
-        >
-          <img src="/svg/fi_arrow-left.svg" alt="" className="back" />
+    <>
+      {editMode ? (
+        <div>
+          <ProductPreview imagePreview={preview} toggleEdit={setEditMode} products={product} publish={updateProductSave} />
         </div>
-        <div className="col-sm-6">
-          <div className="create-product-form">
-            <form onSubmit={updateProducts}>
-              <label className="create-product-label">Nama Produk</label>
-              <input type="text" className="form-control" placeholder="Nama Produk" value={nama_produk} onChange={(e) => setNama_Produk(e.target.value)} />
-              <label className="create-product-label">Harga Produk</label>
-              <input className="form-control" placeholder={`Rp 0.00`} value={harga_produk} onChange={(e) => setHarga_Produk(e.target.value)} />
-              <label className="create-product-label">Kategori</label>
-              <select class="form-control" value={kategori} onChange={(e) => setKategori(e.target.value)}>
-                <option>Hobi</option>
-                <option>Kendaraan</option>
-                <option>Baju</option>
-                <option>Elektronik</option>
-                <option>Kesehatan</option>
-              </select>
-              <label className="create-product-label">Deskripsi</label>
-              <textarea type="text" className="form-control description" placeholder="Contoh: Jalan Ikan Hiu 33" value={deskripsi} onChange={(e) => setDeskripsi(e.target.value)}></textarea>
-
-              <label className="create-product-label">Foto Produk</label>
+      ) : (
+        <>
+          <div className='create-product-container container mt-3'>
+            <div className='row justify-content-sm-center g-0'>
               <div
-                className="picture"
-                onChange={loadImage}
+                className='col-sm-1'
                 onClick={() => {
-                  fileInputRef.current.click();
+                  navigate('/dashboard/seller');
                 }}
               >
-                {preview ? <img src={preview} alt="" className="image-uploaded" /> : <img src={gambar} alt="" className="image-uploaded" />}
+                <img src='/svg/fi_arrow-left.svg' alt='' className='back' />
               </div>
-
-              <input type="file" className="form-control" style={{ display: "none" }} ref={fileInputRef} accept="image/*" onChange={handleFile} />
-
-              <div className="row mt-4" type="submit">
-                <button className="col preview" onClick={handlePreview} type="submit">
-                  Preview
-                </button>
-                <button className="col terbitkan" type="submit">
-                  Terbitkan
-                </button>
+              <div className='col-sm-6'>
+                <div className='create-product-form'>
+                  <form>
+                    <label className='create-product-label'>Nama Produk</label>
+                    <input
+                      type='text'
+                      className='form-control'
+                      placeholder='Nama Produk'
+                      value={product?.nama_produk ?? 'Loading...'}
+                      onChange={(event) => {
+                        updateProduct(event.target.value, 'nama_produk');
+                      }}
+                    />
+                    <label className='create-product-label'>Harga Produk</label>
+                    <input
+                      onChange={(event) => {
+                        updateProduct(event.target.value, 'harga_produk');
+                      }}
+                      className='form-control'
+                      placeholder={`Rp 0.00`}
+                      value={product?.harga_produk ?? 'Loading...'}
+                    />
+                    <label className='create-product-label'>Kategori</label>
+                    <select class='form-control' value={product?.kategori}>
+                      <option>Hobi</option>
+                      <option>Kendaraan</option>
+                      <option>Baju</option>
+                      <option>Elektronik</option>
+                      <option>Kesehatan</option>
+                    </select>
+                    <label className='create-product-label'>Deskripsi</label>
+                    <textarea
+                      onChange={(event) => {
+                        updateProduct(event.target.value, 'deskripsi');
+                      }}
+                      type='text'
+                      className='form-control description'
+                      placeholder='Contoh: Jalan Ikan Hiu 33'
+                      value={product?.deskripsi ?? 'Loading...'}
+                    ></textarea>
+                    <label className='create-product-label'>Foto Produk</label>
+                    <div className='row'>
+                      <div className='col-2'>
+                        <div
+                          className='picture'
+                          onChange={loadImage}
+                          onClick={() => {
+                            fileInputRef.current.click();
+                          }}
+                        >
+                          {preview ? <img src={preview} alt='' className='image-uploaded' /> : <img src='/svg/fi_plus.svg' alt='' className='plus-svg' />}
+                        </div>
+                        <input
+                          type='file'
+                          className='form-control'
+                          style={{ display: 'none' }}
+                          ref={fileInputRef}
+                          accept='image/*'
+                          onChange={(event) => {
+                            const gambar = event.target.files[0];
+                            if (gambar) {
+                              setGambar(gambar);
+                            } else {
+                              setGambar(null);
+                            }
+                          }}
+                        />
+                      </div>
+                      <div className='col-2'>
+                        {/* <div>
+                          <img src={product?.gambar[0]} alt='' className='image-uploaded' />
+                        </div> */}
+                      </div>
+                    </div>
+                    <input type='file' className='form-control' style={{ display: 'none' }} accept='image/*' />
+                    <div className='row mt-4' type='submit'>
+                      <button
+                        className='col preview'
+                        type='submit'
+                        onClick={() => {
+                          setEditMode(true);
+                        }}
+                      >
+                        Preview
+                      </button>
+                      <button
+                        onClick={(event) => {
+                          event.preventDefault();
+                          setLoading(true);
+                          updateProductSave(product.id, product);
+                        }}
+                        className='col terbitkan'
+                        type='submit'
+                      >
+                        {loading ? <>Uploading...</> : <>Terbitkan</>}
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
-            </form>
+              <div className='col-sm-1'></div>
+            </div>
           </div>
-        </div>
-        <div className="col-sm-1"></div>
-      </div>
-    </div>
+        </>
+      )}
+    </>
   );
 }

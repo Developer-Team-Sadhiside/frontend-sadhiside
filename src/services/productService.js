@@ -108,7 +108,7 @@ export function ProductProvider({ children }) {
     } else {
       const token = localStorage.getItem('token');
       let product = await fetch(`${domain}/api/v1/getOneProduct/${id}`, {
-      //let product = await fetch(`http://localhost:8000/api/v1/getOneProductWhenOffer/${id}`, {
+        //let product = await fetch(`http://localhost:8000/api/v1/getOneProductWhenOffer/${id}`, {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',
@@ -231,7 +231,6 @@ export function ProductProvider({ children }) {
   }
 
   async function rejectOfferProduct(id) {
-    console.log(id);
     if (!checkUserLogin()) {
       navigate('/login');
     } else {
@@ -263,7 +262,7 @@ export function ProductProvider({ children }) {
     acceptOfferProduct,
     rejectOfferProduct,
     buyerProductsOffered,
-    getBuyerProductsOffered
+    getBuyerProductsOffered,
   };
 
   return <ProductContext.Provider value={productsContextValue}>{children}</ProductContext.Provider>;

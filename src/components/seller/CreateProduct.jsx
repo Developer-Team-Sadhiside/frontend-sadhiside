@@ -114,12 +114,14 @@ export default function CreateProduct() {
               />
               <div className='row mt-4'>
                 <button className='col preview'>Preview</button>
-                <button onClick={() => {
-                  setLoading(true)
-                }} className='col terbitkan' type='submit'>
-                  {
-                    loading ? <>Uploading...</> : <>Terbitkan</>
-                  }
+                <button
+                  onClick={() => {
+                    setLoading(true);
+                  }}
+                  className='col terbitkan'
+                  type='submit'
+                >
+                  {loading ? <>Uploading...</> : <>Terbitkan</>}
                 </button>
               </div>
             </form>
