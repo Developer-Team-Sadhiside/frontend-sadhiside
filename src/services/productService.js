@@ -246,6 +246,23 @@ export function ProductProvider({ children }) {
     }
   }
 
+  async function deleteProduct(id) {
+    console.log(id);
+    if (!checkUserLogin()) {
+      navigate('/login');
+    } else {
+      const token = localStorage.getItem('token');
+      let result = await fetch(`${domain}/api/v1/product/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return true;
+    }
+  }
+
   const productsContextValue = {
     products,
     setProducts,
@@ -263,6 +280,7 @@ export function ProductProvider({ children }) {
     rejectOfferProduct,
     buyerProductsOffered,
     getBuyerProductsOffered,
+    deleteProduct,
   };
 
   return <ProductContext.Provider value={productsContextValue}>{children}</ProductContext.Provider>;

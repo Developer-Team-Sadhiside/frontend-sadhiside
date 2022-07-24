@@ -33,6 +33,7 @@ export default function UpdateProduct() {
     if (changes === 'nama_produk') setProduct({ ...product, nama_produk: data });
     else if (changes === 'harga_produk') setProduct({ ...product, harga_produk: data });
     else if (changes === 'deskripsi') setProduct({ ...product, deskripsi: data });
+    else if (changes === 'kategori') setProduct({ ...product, kategori: data });
   }
 
   useEffect(() => {
@@ -108,7 +109,13 @@ export default function UpdateProduct() {
                       value={product?.harga_produk ?? 'Loading...'}
                     />
                     <label className='create-product-label'>Kategori</label>
-                    <select class='form-control' value={product?.kategori}>
+                    <select
+                      class='form-control'
+                      value={product?.kategori}
+                      onChange={(event) => {
+                        updateProduct(event.target.value, 'kategori');
+                      }}
+                    >
                       <option>Hobi</option>
                       <option>Kendaraan</option>
                       <option>Baju</option>
