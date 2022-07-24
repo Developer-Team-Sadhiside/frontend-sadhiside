@@ -154,7 +154,7 @@ export function ProductProvider({ children }) {
       result = await result.json();
 
       if (result?.user?.role[1] === 'seller') {
-        let result = await fetch(`${domain}/api/v1/history/buyer/listProductsOffered`, {
+        let result = await fetch(`${domain}/api/v1/history/seller`, {
           method: 'GET',
           headers: {
             'Content-type': 'application/json',
