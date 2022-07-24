@@ -67,7 +67,7 @@ const BidderInfo = () => {
                       <button onClick={() => {}} className='btn-tolak' id='preview' data-bs-toggle='modal' data-bs-target={`#statusProduct${offer?.id}`}>
                         Status
                       </button>
-                      <ConfirmSoldStatusModal idModal={`statusProduct${offer?.id}`} productId={offer?.Product?.id}/>
+                      <ConfirmSoldStatusModal idModal={`statusProduct${offer?.id}`} productId={offer?.Product?.id} />
                     </>
                   ) : (
                     <>
