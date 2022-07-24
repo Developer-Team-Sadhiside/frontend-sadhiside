@@ -36,10 +36,8 @@ const EditProfileSeller = () => {
     formData.append('alamat', alamat);
     formData.append('no_hp', no_hp);
 
-    const domain = 'https://secondhand-shadiside.herokuapp.com';
-
     try {
-      await axios.put(`${domain}/api/v1/users/addProfil`, formData, {
+      await axios.put(`https://secondhand-shadiside.herokuapp.com/api/v1/users/addProfil`, formData, {
         headers: {
           'Content-type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -52,7 +50,7 @@ const EditProfileSeller = () => {
   };
 
   useState(async () => {
-    const response = await axios.get(`${domain}/api/v1/users/whoAmI`, {
+    const response = await axios.get(`https://secondhand-shadiside.herokuapp.com/api/v1/users/whoAmI`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

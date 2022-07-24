@@ -36,10 +36,8 @@ export default function UpdateProduct() {
     formData.append("kategori", kategori);
     formData.append("deskripsi", deskripsi);
 
-    const domain = 'https://secondhand-shadiside.herokuapp.com'
-
     try {
-      await axios.put(`${domain}/api/v1/product/${id}`, formData, {
+      await axios.put(`https://secondhand-shadiside.herokuapp.com/api/v1/product/${id}`, formData, {
         headers: {
           "Content-type": "multipart/form-data",
           Authorization: "Bearer " + token,
@@ -62,7 +60,7 @@ export default function UpdateProduct() {
     formData.append("deskripsi", deskripsi);
 
     try {
-      await axios.put(`${domain}/api/v1/product/${id}`, formData, {
+      await axios.put(`https://secondhand-shadiside.herokuapp.com/api/v1/product/${id}`, formData, {
         headers: {
           "Content-type": "multipart/form-data",
           Authorization: "Bearer " + token,
@@ -76,7 +74,7 @@ export default function UpdateProduct() {
   };
 
   useState(async () => {
-    const response = await axios.get(`${domain}/api/v1/getOneProduct/${id}`, {
+    const response = await axios.get(`https://secondhand-shadiside.herokuapp.com/api/v1/getOneProduct/${id}`, {
       headers: {
         Authorization: "Bearer " + token,
       },
