@@ -52,7 +52,8 @@ function List({ iconActive }) {
   );
 }
 
-function User() {
+function User({ iconActive }) {
+  
   const [isLoading, setIsLoading] = useState(false);
   const token = localStorage.getItem('token');
 
@@ -78,7 +79,7 @@ function User() {
             zIndex: '1',
           }}
         >
-          <img className='img-user' src='/svg/fi_user-inactive.svg' />
+          <img className='img-user' src={iconActive ? '/svg/fi_user-active.svg' : '/svg/fi_user-inactive.svg'} />
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item href='/dashboard/seller'>Daftar Jual Saya</Dropdown.Item>
@@ -92,7 +93,7 @@ function User() {
   );
 }
 
-function Notif() {
+function Notif({iconActive}) {
   const [hidden, setHidden] = useState(false);
   const productContext = useProductContext();
   useEffect(() => {
@@ -107,7 +108,7 @@ function Notif() {
           productContext.getProductsOffered();
         }}
       >
-        <img src='/svg/fi_bell-inactive.svg' />
+        <img src={iconActive ? '/svg/fi_bell-active.svg' : '/svg/fi_bell-inactive.svg'} />
       </span>
       <a href='#' className='badge-notif' data-badge=''></a>
       {hidden && (
@@ -194,7 +195,9 @@ const Navbar = () => {
   }
 
   function toggleIconActive(iconId) {
-    setIconActive({ ...iconActive });
+    if (iconId == 'list') setIconActive({ list: true, notif: false, user: false });
+    else if (iconId == 'notif') setIconActive({ list: false, notif: true, user: false });
+    else if (iconId == 'user') setIconActive({ list: false, notif: false, user: true });
   }
 
   useEffect(() => {
@@ -223,21 +226,21 @@ const Navbar = () => {
                 toggleIconActive('list');
               }}
             >
-              <List iconActive={iconActive[0]} />
+              <List iconActive={iconActive.list} />
             </div>
             <div
               onClick={() => {
                 toggleIconActive('notif');
               }}
             >
-              <Notif iconActive={iconActive[1]} />
+              <Notif iconActive={iconActive.notif} />
             </div>
             <div
               onClick={() => {
                 toggleIconActive('user');
               }}
             >
-              <User iconActive={iconActive[2]} />
+              <User iconActive={iconActive.user} />
             </div>
           </>
         ) : (
