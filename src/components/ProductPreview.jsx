@@ -60,12 +60,27 @@ export function PurpleButton(props) {
 }
 
 export function ProductCardPreview(props) {
+  const productContext = useProductContext();
   const params = useParams();
   return (
     <div className='product-card-preview'>
-      <p className='product-card-heading-preview'>{props?.product?.produk?.nama_produk}</p>
-      <p className='product-card-category-preview'>{props?.product?.produk?.kategori}</p>
-      <p className='product-card-price-preview'>Rp. {props?.product?.produk?.harga_produk.toLocaleString('id-ID')}</p>
+      <div className="row">
+        <div className="col-9">
+          <p className='product-card-heading-preview'>{props?.product?.produk?.nama_produk}</p>
+          <p className='product-card-category-preview'>{props?.product?.produk?.kategori}</p>
+          <p className='product-card-price-preview'>Rp. {props?.product?.produk?.harga_produk.toLocaleString('id-ID')}</p>
+        </div>
+        <span className='col-3'>
+          <img
+            onClick={() => {
+              productContext.productLikeHandler(props.productId);
+            }}
+            className='product-like-button-preview'
+            src={props?.product?.produk?.Likes[0]?.isLike ?'/svg/fi_like.svg' : '/svg/fi_unlike.svg'}
+            alt='Like icon'
+          />
+        </span>
+      </div>
       <div className='product-card-button-preview'>
         {params?.id ? (
           <>

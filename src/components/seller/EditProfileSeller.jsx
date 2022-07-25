@@ -65,7 +65,10 @@ const EditProfileSeller = () => {
 
   return (
     <div className='profile-container'>
-      <div className='col-sm'>
+      <div className='col-sm-1'
+        onClick={() => {
+          navigate('/dashboard/seller');
+        }}>
         <img src='/svg/fi_arrow-left.svg' alt='' className='back' style={{ marginTop: '30px', marginLeft: '-50px' }} />
       </div>
       <div

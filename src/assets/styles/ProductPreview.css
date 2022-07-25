@@ -79,6 +79,24 @@
   margin-top: 14px;
 }
 
+.product-like-button-preview {
+  margin-top: 15px;
+  width: 50px;
+  position: relative;
+}
+
+.product-like-button-preview:hover {
+  z-index: 2;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.20);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.20);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.20);
+  transition: all 200ms ease-in;
+  transform: scale(1.20);
+}
+
 .user-card-preview {
   padding: 16px 24px;
   border-radius: 16px;
@@ -105,6 +123,10 @@
 }
 
 .user-card-identity-name-preview {
+  font-size: 14px;
+}
+
+.user-card-identity-name-preview-new {
   font-size: 14px;
 }
 

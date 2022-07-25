@@ -45,6 +45,13 @@ const CategorySeller = () => {
     setSell(true);
   };
 
+  function refreshPage(e) {
+    e.preventDefault();
+    setTimeout(()=>{
+        window.location.reload(false);
+    }, 1500);
+  }
+
   useEffect(() => {
     getProductsSeller();
   }, []);
@@ -162,8 +169,9 @@ const CategorySeller = () => {
                         </Link>
                         <span className='col product-delete-button'>
                           <img
-                            onClick={() => {
+                            onClick={(e) => {
                               productContext.deleteProduct(productsSeller.id);
+                              refreshPage(e)
                             }}
                             src='/svg/fi_trash-2.svg'
                             alt='Like icon'
