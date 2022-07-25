@@ -68,6 +68,15 @@
   color: #ffffff;
 }
 
+.product-card-button-publish-preview-no {
+  width: 100%;
+  height: 48px;
+  background: #ff0000;
+  border: 1px solid #ff0000;
+  border-radius: 16px;
+  color:#ff0000;
+}
+
 .product-card-button-edit-preview {
   width: 100%;
   height: 48px;

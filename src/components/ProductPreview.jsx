@@ -62,6 +62,7 @@ export function PurpleButton(props) {
 export function ProductCardPreview(props) {
   const productContext = useProductContext();
   const params = useParams();
+  console.log(props)
   return (
     <div className='product-card-preview'>
       <div className="row">

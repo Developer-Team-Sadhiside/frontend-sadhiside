@@ -13,6 +13,7 @@ export function ProductProvider({ children }) {
   const [toggleFilter, setToggleFilter] = useState(true);
   const [productsOffered, setProductsOffered] = useState([]);
   const [buyerProductsOffered, setBuyerProductsOffered] = useState([]);
+  const [buyerProductsAccept, setBuyerProductsAccept] = useState([]);
 
   const navigate = useNavigate();
   const domain = 'https://secondhand-shadiside.herokuapp.com';
@@ -197,6 +198,35 @@ export function ProductProvider({ children }) {
     }
   }
 
+  async function getBuyerProductsAccept() {
+    if (!checkUserLogin()) {
+      navigate('/login');
+    } else {
+      const token = localStorage.getItem('token');
+
+      let result = await fetch(`${domain}/api/v1/users/whoAmI`, {
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      result = await result.json();
+
+      if (result?.user?.role[0] === 'buyer') {
+        let result = await fetch(`${domain}/api/v1/history/buyer/listAcceptedOffer`, {
+          method: 'GET',
+          headers: {
+            'Content-type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        result = await result.json();
+        setBuyerProductsAccept(result.data);
+      }
+    }
+  }
+
   async function getDetailProductOffer(id) {
     if (!checkUserLogin()) {
       navigate('/login');
@@ -281,6 +311,8 @@ export function ProductProvider({ children }) {
     buyerProductsOffered,
     getBuyerProductsOffered,
     deleteProduct,
+    buyerProductsAccept,
+    getBuyerProductsAccept,
   };
 
   return <ProductContext.Provider value={productsContextValue}>{children}</ProductContext.Provider>;
