@@ -27,7 +27,7 @@ export function Card(props) {
       </Link>
       <div className='row'>
         <Link to={props.link} style={{ textDecoration: 'none' }} className='col-9'>
-          <p className='price-product'>Rp. {props.price.toLocaleString('id-ID')}</p>
+          <p className='price-product'>Rp. {props?.price.toLocaleString('id-ID')}</p>
         </Link>
         <span className='col'>
           <img
