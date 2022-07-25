@@ -11,6 +11,7 @@ export function RegisterProvider({ children }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const [notificationMessage, setNotificationMessage] = useState('');
   const [toggleNotification, setToggleNotification] = useState(false);
@@ -51,6 +52,7 @@ export function RegisterProvider({ children }) {
       setTimeout(() => {
         setToggleNotification(false);
       }, 1500);
+      setLoading(false);
       return false;
     } else {
       return true;
@@ -77,7 +79,7 @@ export function RegisterProvider({ children }) {
       setToggleNotification(true);
       setNotificationMessage(result.message);
 
-      if (statusResponse === 202) {
+      if (statusResponse === 201) {
         setNotificationMessage('Register success');
         navigate('/login');
       }
@@ -108,6 +110,8 @@ export function RegisterProvider({ children }) {
     changeInputPasswordType,
     postRegister,
     hideNotification,
+    loading,
+    setLoading,
   };
 
   return <RegisterContext.Provider value={registerContextValue}>{children}</RegisterContext.Provider>;

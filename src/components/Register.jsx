@@ -1,6 +1,7 @@
 import '../assets/styles/Register.css';
 import { Link } from 'react-router-dom';
 import { useRegisterContext } from '../services/registerService';
+import { useState } from 'react';
 
 export default function Register() {
   const productContext = useRegisterContext();
@@ -67,10 +68,22 @@ export default function Register() {
                           }}
                         />
                         <span onClick={productContext.changeInputPasswordType}>
-                          {productContext.eye ? <img src='/svg/fi_eye-off.svg' alt='Eye Icon' className='register-eye-icon' /> : <img src='/svg/fi_eye.svg' alt='Eye Icon' className='register-eye-icon' />}
+                          {productContext.eye ? (
+                            <img src='/svg/fi_eye-off.svg' alt='Eye Icon' className='register-eye-icon' />
+                          ) : (
+                            <img src='/svg/fi_eye.svg' alt='Eye Icon' className='register-eye-icon' />
+                          )}
                         </span>
                       </div>
-                      <input onClick={productContext.postRegister} type='submit' className='form-control register-button' value='Daftar' />
+                      <input
+                        onClick={(event) => {
+                          productContext.setLoading(true);
+                          productContext.postRegister(event);
+                        }}
+                        type='submit'
+                        className='form-control register-button'
+                        value={productContext.loading ? 'Loading...' : 'Daftar'}
+                      />
                       <p className='text-center'>
                         Sudah punya akun?{' '}
                         <Link to='/login' className='link-already-registered'>
