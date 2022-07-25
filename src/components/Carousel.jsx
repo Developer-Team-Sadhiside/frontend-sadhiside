@@ -1,9 +1,9 @@
 import React from 'react';
-import { Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import '../assets/styles/Carousel.css';
-import "swiper/css";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 const Carousel = () => {
   return (
@@ -16,11 +16,11 @@ const Carousel = () => {
         grabCursor={true}
         loop={true}
         autoplay={{
-            delay: 1500,
-            disableOnInteraction: false,
-          }}
+          delay: 1500,
+          disableOnInteraction: false,
+        }}
         breakpoints={{
-          320:{
+          320: {
             slidesPerView: 1,
             spaceBetween: 20,
           },
@@ -30,16 +30,26 @@ const Carousel = () => {
           },
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        className='mySwiper'
       >
-        <SwiperSlide><img src="/images/banner-1.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
-        <SwiperSlide><img src="/images/banner-2.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
-        <SwiperSlide><img src="/images/banner-3.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
-        <SwiperSlide><img src="/images/banner-4.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
-        <SwiperSlide><img src="/images/banner-5.png" alt="imgbanner1" border="0" className="img-fluid"/></SwiperSlide>
+        <SwiperSlide>
+          <img src='/images/banner-1.png' alt='imgbanner1' border='0' className='img-fluid' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src='/images/banner-2.png' alt='imgbanner1' border='0' className='img-fluid' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src='/images/banner-3.png' alt='imgbanner1' border='0' className='img-fluid' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src='/images/banner-4.png' alt='imgbanner1' border='0' className='img-fluid' />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src='/images/banner-5.png' alt='imgbanner1' border='0' className='img-fluid' />
+        </SwiperSlide>
       </Swiper>
     </div>
-  )
-}
+  );
+};
 
-export default Carousel
+export default Carousel;
